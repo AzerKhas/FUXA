@@ -815,7 +815,7 @@ export class GaugeShapeGeneral {
     borderColor = '#0000ff';
     foreground = '#000000';
     background = '#ffff00';
-    pattern: 'solid' | 'none' = 'solid';
+    pattern: 'solid' | 'hatch' | 'none' = 'solid';
     dataType: 'int16' | 'uint16' | 'int32' | 'uint32' | 'float32' | 'float64' | 'bool' | 'string' = 'float32';
     totalDigits = 5;
     fractionalDigits = 2;

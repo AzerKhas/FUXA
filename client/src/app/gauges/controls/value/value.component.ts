@@ -4,6 +4,7 @@ import { GaugeSettings, Variable, GaugeStatus, GaugeAction, GaugeActionsType, Ga
 import { GaugeDialogType } from '../../gauge-property/gauge-property.component';
 
 import { Utils } from '../../../_helpers/utils';
+import { ShapeStyleHelper } from '../../gauge-property/custom-tabs/shape-style.helper';
 
 declare var SVG: any;
 
@@ -84,6 +85,12 @@ export class ValueComponent extends GaugeBaseComponent {
                             if (numericValue !== null) {
                                 val = numericValue.toFixed(digit);
                             }
+                        }
+                    } else if (ga.property.style) {
+                        // custom-SCADA: digits of the page General (total, fractional, zero padding)
+                        const formatted = ShapeStyleHelper.formatValue(sig.value, ga.property.style.general);
+                        if (formatted !== null) {
+                            val = formatted;
                         }
                     }
                     if (ga.property.variableId === sig.id) {

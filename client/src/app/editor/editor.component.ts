@@ -10,6 +10,7 @@ import { ProjectService, SaveMode } from '../_services/project.service';
 import { Hmi, View, GaugeSettings, SelElement, LayoutSettings, ViewType, ISvgElement, GaugeProperty, DocProfile } from '../_models/hmi';
 import { WindowRef } from '../_helpers/windowref';
 import { GaugePropertyComponent, GaugeDialogType, GaugePropertyData } from '../gauges/gauge-property/gauge-property.component';
+import { ShapeStyleHelper } from '../gauges/gauge-property/custom-tabs/shape-style.helper';
 
 import { GaugesManager } from '../gauges/gauges.component';
 import { GaugeBaseComponent } from '../gauges/gauge-base/gauge-base.component';
@@ -1502,6 +1503,10 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 callback(result.settings);
+                // custom-SCADA: apply the style of the pages General / Label to the SVG element
+                if (ShapeStyleHelper.applyToElement(result.settings)) {
+                    this.currentView.svgcontent = this.getContent();
+                }
                 this.saveView(this.currentView);
                 this.gaugesManager.initInEditor(result.settings, this.resolver, this.viewContainerRef, elementWithLanguageText);
                 this.checkSvgElementsMap(true);

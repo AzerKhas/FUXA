@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { GaugeProperty, GaugeShapeLabel } from '../../../_models/hmi';
 import { Utils } from '../../../_helpers/utils';
+import { LibImagesComponent } from '../../../resources/lib-images/lib-images.component';
 
 /**
  * custom-SCADA: page "Label" of the object dialog
@@ -21,6 +23,10 @@ export class GaugeLabelTabComponent {
     wordSpacings = [0, 1, 2, 3, 4, 5, 8, 10];
     positions = ['left', 'center', 'right'];
 
+    constructor(private dialog: MatDialog,
+                private cdr: ChangeDetectorRef) {
+    }
+
     get label(): GaugeShapeLabel {
         return this.property.style.label;
     }
@@ -30,6 +36,20 @@ export class GaugeLabelTabComponent {
         this.label.image = '';
     }
 
+    /** chooses an image from the FUXA images library ("Gallery" button) */
+    onGallery() {
+        const dialogRef = this.dialog.open(LibImagesComponent, {
+            disableClose: true,
+            position: { top: '60px' }
+        });
+        dialogRef.afterClosed().subscribe((imgPath: string) => {
+            if (imgPath) {
+                this.label.image = imgPath;
+                this.cdr.markForCheck();
+            }
+        });
+    }
+
     /** loads an image from a local file ("File" button) as data URL, so it is saved with the project */
     onFileSelected(event: Event) {
         const file = (event.target as HTMLInputElement).files?.[0];
@@ -37,7 +57,10 @@ export class GaugeLabelTabComponent {
             return;
         }
         const reader = new FileReader();
-        reader.onload = () => this.label.image = <string>reader.result;
+        reader.onload = () => {
+            this.label.image = <string>reader.result;
+            this.cdr.markForCheck();
+        };
         reader.readAsDataURL(file);
     }
 }

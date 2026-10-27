@@ -11,6 +11,7 @@ import { PermissionData, PermissionDialogComponent } from './permission-dialog/p
 import { SettingsService } from '../../_services/settings.service';
 import { Device } from '../../_models/device';
 import { HtmlButtonComponent } from '../controls/html-button/html-button.component';
+import { ShapeStyleHelper } from './custom-tabs/shape-style.helper';
 
 @Component({
     selector: 'gauge-property',
@@ -36,6 +37,7 @@ export class GaugePropertyComponent implements AfterViewInit {
     defaultValue: any;
     inputs: GaugeSettings[];
     scripts: Script[];
+    private hadStyle = false;
 
     constructor(public dialog: MatDialog,
                 public dialogRef: MatDialogRef<GaugePropertyComponent>,
@@ -52,6 +54,7 @@ export class GaugePropertyComponent implements AfterViewInit {
         if (!this.property) {
             this.property = new GaugeProperty();
         }
+        this.hadStyle = !!this.property.style;
         this.property.style = GaugeShapeStyle.withDefaults(this.property.style);
     }
 
@@ -110,6 +113,10 @@ export class GaugePropertyComponent implements AfterViewInit {
             this.property.readonly = true;
         } else {
             delete this.property.readonly;
+        }
+        // custom-SCADA: keep the style only if the user changed it, so untouched objects are not restyled
+        if (!this.hadStyle && this.data.settings.property?.style && ShapeStyleHelper.isDefault(this.data.settings.property.style)) {
+            delete this.data.settings.property.style;
         }
     }
 

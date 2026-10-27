@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { GaugeProperty, GaugeShapeGeneral, IPropertyVariable } from '../../../_models/hmi';
+import { GaugeProperty, GaugeShapeGeneral, GaugeShapeLabel, IPropertyVariable } from '../../../_models/hmi';
 import { Utils } from '../../../_helpers/utils';
 
 /**
@@ -20,14 +20,28 @@ export class GaugeGeneralTabComponent {
 
     defaultColor = Utils.defaultColor;
     dataTypes = ['int16', 'uint16', 'int32', 'uint32', 'float32', 'float64', 'bool', 'string'];
-    patterns = ['solid', 'none'];
+    patterns = ['solid', 'hatch', 'none'];
 
     get general(): GaugeShapeGeneral {
         return this.property.style.general;
     }
 
-    get previewText(): string {
-        return this.property.style.label.text;
+    get label(): GaugeShapeLabel {
+        return this.property.style.label;
+    }
+
+    /** preview of the pattern: solid background, hatch (foreground lines on background) or none */
+    get previewBackground(): string {
+        if (this.general.pattern === 'solid') {
+            return this.general.background;
+        } else if (this.general.pattern === 'hatch') {
+            return `repeating-linear-gradient(45deg, ${this.general.foreground} 0 2px, ${this.general.background} 2px 8px)`;
+        }
+        return 'transparent';
+    }
+
+    get previewJustify(): string {
+        return this.label.position === 'left' ? 'flex-start' : this.label.position === 'right' ? 'flex-end' : 'center';
     }
 
     onTagChange(event: IPropertyVariable) {

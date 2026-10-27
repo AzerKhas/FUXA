@@ -38,6 +38,7 @@ import { PanelComponent } from './controls/panel/panel.component';
 import { FuxaViewComponent } from '../fuxa-view/fuxa-view.component';
 import { AuthService } from '../_services/auth.service';
 import { DevicesUtils, Tag } from '../_models/device';
+import { ShapeStyleHelper } from './gauge-property/custom-tabs/shape-style.helper';
 import { HtmlVideoComponent } from './controls/html-video/html-video.component';
 
 @Injectable()
@@ -456,6 +457,11 @@ export class GaugesManager {
      * @param ga
      */
     getBindSignals(gaugeSettings: GaugeSettings, sourceDeviceTags?: Tag[]) {
+        // custom-SCADA: add the tags of the page Visibility
+        return ShapeStyleHelper.addVisibilitySignals(this.getBindSignalsFuxa(gaugeSettings, sourceDeviceTags), gaugeSettings.property);
+    }
+
+    private getBindSignalsFuxa(gaugeSettings: GaugeSettings, sourceDeviceTags?: Tag[]) {
         if (gaugeSettings.property) {
             for (let i = 0; i < GaugesManager.Gauges.length; i++) {
                 if (gaugeSettings.type.startsWith(GaugesManager.Gauges[i].TypeTag)) {
@@ -560,6 +566,8 @@ export class GaugesManager {
      */
     processValue(ga: GaugeSettings, svgele: any, sig: Variable, gaugeStatus: GaugeStatus) {
         gaugeStatus.variablesValue[sig.id] = sig.value;
+        // custom-SCADA: page Visibility (controlled by bit / word)
+        ShapeStyleHelper.processVisibility(ga, svgele, gaugeStatus);
         for (let i = 0; i < GaugesManager.Gauges.length; i++) {
             if (ga.type.startsWith(GaugesManager.Gauges[i].TypeTag)) {
                 if (ga.type.startsWith(HtmlChartComponent.TypeTag)) {
@@ -854,6 +862,10 @@ export class GaugesManager {
                     this.hmiService.addSignal(signalId);
                 }
             });
+        }
+        if (isview) {
+            // custom-SCADA: page Visibility (control penetration)
+            ShapeStyleHelper.initInView(ga);
         }
         if (isview && ga.hide) {
             let ele = document.getElementById(ga.id);

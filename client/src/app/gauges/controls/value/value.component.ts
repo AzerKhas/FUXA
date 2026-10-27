@@ -86,9 +86,9 @@ export class ValueComponent extends GaugeBaseComponent {
                                 val = numericValue.toFixed(digit);
                             }
                         }
-                    } else if (ga.property.style) {
-                        // custom-SCADA: digits of the page General (total, fractional, zero padding)
-                        const formatted = ShapeStyleHelper.formatValue(sig.value, ga.property.style.general);
+                    } else if (ga.property.style && ga.property.variableId === sig.id) {
+                        // custom-SCADA: pages General and Advanced (digits, zoom, display range, ratio)
+                        const formatted = ShapeStyleHelper.formatStyledValue(sig.value, ga.property.style, g);
                         if (formatted !== null) {
                             val = formatted;
                         }

@@ -1,0 +1,53 @@
+<div class="custom-tab">
+    <fieldset class="custom-group group-inline">
+        <legend>{{'gauges.shape-adv-zoom' | translate}}</legend>
+        <mat-checkbox color="primary" [(ngModel)]="advanced.zoom">{{'gauges.shape-adv-zoom' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="advanced.zoom">
+            <div class="sub-info">{{'gauges.shape-adv-zoom-info' | translate}}</div>
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-adv-source' | translate}} :</span>
+                <input numberOnly [(ngModel)]="advanced.zoomSourceMin" type="number" class="field-number" placeholder="min">
+                <span class="field-sep">→</span>
+                <input numberOnly [(ngModel)]="advanced.zoomSourceMax" type="number" class="field-number" placeholder="max">
+            </div>
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-adv-display' | translate}} :</span>
+                <input numberOnly [(ngModel)]="advanced.zoomDisplayMin" type="number" class="field-number" placeholder="min">
+                <span class="field-sep">→</span>
+                <input numberOnly [(ngModel)]="advanced.zoomDisplayMax" type="number" class="field-number" placeholder="max">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="custom-group group-inline">
+        <legend>{{'gauges.shape-adv-display-range' | translate}}</legend>
+        <div class="check-list">
+            <mat-checkbox color="primary" [(ngModel)]="advanced.displayRange">{{'gauges.shape-adv-display-range' | translate}}</mat-checkbox>
+            <mat-checkbox color="primary" [(ngModel)]="advanced.ratioDisplay">{{'gauges.shape-adv-ratio-display' | translate}}</mat-checkbox>
+        </div>
+        <div class="sub-fields" *ngIf="advanced.displayRange || advanced.ratioDisplay">
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-adv-range-min' | translate}} :</span>
+                <input numberOnly [(ngModel)]="advanced.rangeMin" type="number" class="field-number">
+            </div>
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-adv-range-max' | translate}} :</span>
+                <input numberOnly [(ngModel)]="advanced.rangeMax" type="number" class="field-number">
+            </div>
+            <ng-container *ngIf="advanced.displayRange">
+                <div class="my-form-field field-row">
+                    <span>{{'gauges.shape-adv-below-color' | translate}} :</span>
+                    <input class="color-input color-small" [(colorPicker)]="advanced.belowColor" [style.background]="advanced.belowColor"
+                           [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+                </div>
+                <div class="my-form-field field-row">
+                    <span>{{'gauges.shape-adv-above-color' | translate}} :</span>
+                    <input class="color-input color-small" [(colorPicker)]="advanced.aboveColor" [style.background]="advanced.aboveColor"
+                           [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+                </div>
+            </ng-container>
+            <div class="sub-info" *ngIf="advanced.ratioDisplay">{{'gauges.shape-adv-ratio-info' | translate}}</div>
+        </div>
+    </fieldset>
+    <div class="sub-info">{{'gauges.shape-adv-value-only' | translate}}</div>
+</div>

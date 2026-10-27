@@ -32,3 +32,12 @@
 .image-preview { width: 110px; height: 110px; margin-right: 20px; border: 1px solid rgba(128, 128, 128, 0.5); background: #ffffff; display: flex; align-items: center; justify-content: center; }
 .image-preview img { max-width: 100%; max-height: 100%; }
 .custom-tab-empty { padding: 30px; text-align: center; opacity: 0.6; }
+
+/* pages Advanced and Visibility */
+.check-list mat-checkbox { display: block; }
+.sub-fields { margin: 6px 0 4px 32px; }
+.sub-info { font-size: 12px; opacity: 0.6; margin: 4px 0 8px 0; }
+.custom-tab .field-sep { width: auto; margin: 0 8px; opacity: 0.7; }
+.custom-tab .field-condition { width: 200px; }
+.color-input.color-small { width: 120px; }
+.vis-item { margin-bottom: 10px; }

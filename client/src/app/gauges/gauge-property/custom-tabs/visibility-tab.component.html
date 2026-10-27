@@ -1,0 +1,54 @@
+<div class="custom-tab">
+    <div class="vis-item">
+        <mat-checkbox color="primary" [(ngModel)]="visibility.byBit">{{'gauges.shape-vis-by-bit' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="visibility.byBit">
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-vis-tag' | translate}} :</span>
+                <flex-variable [data]="data" (onchange)="onBitTagChange($event)" [variableId]="visibility.bitVariableId"
+                               [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
+            </div>
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-vis-show-when' | translate}} :</span>
+                <mat-select [(value)]="visibility.bitShowWhen" class="field-input">
+                    <mat-option value="on">{{'gauges.shape-vis-on' | translate}}</mat-option>
+                    <mat-option value="off">{{'gauges.shape-vis-off' | translate}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="vis-item">
+        <mat-checkbox color="primary" [(ngModel)]="visibility.byWord">{{'gauges.shape-vis-by-word' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="visibility.byWord">
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-vis-tag' | translate}} :</span>
+                <flex-variable [data]="data" (onchange)="onWordTagChange($event)" [variableId]="visibility.wordVariableId"
+                               [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
+            </div>
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-vis-show-if' | translate}} :</span>
+                <mat-select [(value)]="visibility.wordCondition" class="field-condition">
+                    <mat-option *ngFor="let c of conditions" [value]="c">{{'gauges.shape-vis-cond-' + c | translate}}</mat-option>
+                </mat-select>
+                <input numberOnly [(ngModel)]="visibility.wordValue" type="number" class="field-number ml10">
+            </div>
+        </div>
+    </div>
+
+    <div class="vis-item">
+        <mat-checkbox color="primary" [checked]="byUserLevel" (change)="onUserLevelToggle($event.checked)">{{'gauges.shape-vis-by-level' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="byUserLevel">
+            <div class="sub-info">{{'gauges.shape-vis-level-info' | translate}}</div>
+            <button mat-stroked-button (click)="onEditUserLevel()">{{'gauges.shape-vis-level-edit' | translate}}</button>
+        </div>
+    </div>
+
+    <div class="vis-item">
+        <mat-checkbox color="primary" [(ngModel)]="visibility.penetration">{{'gauges.shape-vis-penetration' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="visibility.penetration">
+            <div class="sub-info">{{'gauges.shape-vis-penetration-info' | translate}}</div>
+        </div>
+    </div>
+</div>

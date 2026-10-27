@@ -802,13 +802,44 @@ export interface VideoOptions {
 export class GaugeShapeStyle {
     general: GaugeShapeGeneral = new GaugeShapeGeneral();
     label: GaugeShapeLabel = new GaugeShapeLabel();
+    advanced: GaugeShapeAdvanced = new GaugeShapeAdvanced();
+    visibility: GaugeShapeVisibility = new GaugeShapeVisibility();
 
     static withDefaults(style?: Partial<GaugeShapeStyle>): GaugeShapeStyle {
         const result = new GaugeShapeStyle();
         Object.assign(result.general, style?.general);
         Object.assign(result.label, style?.label);
+        Object.assign(result.advanced, style?.advanced);
+        Object.assign(result.visibility, style?.visibility);
         return result;
     }
+}
+
+export class GaugeShapeAdvanced {
+    zoom = false;
+    zoomSourceMin = 0;
+    zoomSourceMax = 100;
+    zoomDisplayMin = 0;
+    zoomDisplayMax = 100;
+    displayRange = false;
+    rangeMin = 0;
+    rangeMax = 100;
+    belowColor = '#0000ff';
+    aboveColor = '#ff0000';
+    ratioDisplay = false;
+}
+
+export type GaugeShapeCondition = 'eq' | 'ne' | 'gt' | 'ge' | 'lt' | 'le';
+
+export class GaugeShapeVisibility {
+    byBit = false;
+    bitVariableId = '';
+    bitShowWhen: 'on' | 'off' = 'on';
+    byWord = false;
+    wordVariableId = '';
+    wordCondition: GaugeShapeCondition = 'eq';
+    wordValue = 0;
+    penetration = false;
 }
 
 export class GaugeShapeGeneral {

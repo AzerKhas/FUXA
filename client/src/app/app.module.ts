@@ -105,6 +105,8 @@ import { FlexAuthComponent } from './gauges/gauge-property/flex-auth/flex-auth.c
 import { FlexHeadComponent } from './gauges/gauge-property/flex-head/flex-head.component';
 import { GaugeGeneralTabComponent } from './gauges/gauge-property/custom-tabs/general-tab.component';
 import { GaugeLabelTabComponent } from './gauges/gauge-property/custom-tabs/label-tab.component';
+import { GaugeAdvancedTabComponent } from './gauges/gauge-property/custom-tabs/advanced-tab.component';
+import { GaugeVisibilityTabComponent } from './gauges/gauge-property/custom-tabs/visibility-tab.component';
 import { FlexEventComponent } from './gauges/gauge-property/flex-event/flex-event.component';
 import { FlexActionComponent } from './gauges/gauge-property/flex-action/flex-action.component';
 import { FlexActionsStandaloneComponent } from './gauges/gauge-property/flex-actions-standalone/flex-actions-standalone.component';
@@ -338,6 +340,8 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
         FlexHeadComponent,
         GaugeGeneralTabComponent,
         GaugeLabelTabComponent,
+        GaugeAdvancedTabComponent,
+        GaugeVisibilityTabComponent,
         FlexEventComponent,
         FlexActionComponent,
         FlexActionsStandaloneComponent,

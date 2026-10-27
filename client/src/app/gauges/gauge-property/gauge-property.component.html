@@ -94,12 +94,12 @@
 			</mat-tab>
 			<mat-tab label="{{'gauges.shape-tab-advanced' | translate}}">
 				<div class="mat-tab-container">
-					<div class="custom-tab-empty">{{'gauges.shape-tab-empty' | translate}}</div>
+					<gauge-advanced-tab [property]="property"></gauge-advanced-tab>
 				</div>
 			</mat-tab>
 			<mat-tab label="{{'gauges.shape-tab-visibility' | translate}}">
 				<div class="mat-tab-container">
-					<div class="custom-tab-empty">{{'gauges.shape-tab-empty' | translate}}</div>
+					<gauge-visibility-tab [data]="data" [property]="property"></gauge-visibility-tab>
 				</div>
 			</mat-tab>
 		</mat-tab-group>

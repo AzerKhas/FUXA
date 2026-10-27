@@ -81,6 +81,27 @@
 					</div>
 				</div>
 			</mat-tab>
+			<!-- custom-SCADA: pages General / Label / Advanced / Visibility -->
+			<mat-tab label="{{'gauges.shape-tab-general' | translate}}">
+				<div class="mat-tab-container">
+					<gauge-general-tab [data]="data" [property]="property" (tagChange)="onGeneralTagChange($event)"></gauge-general-tab>
+				</div>
+			</mat-tab>
+			<mat-tab label="{{'gauges.shape-tab-label' | translate}}">
+				<div class="mat-tab-container">
+					<gauge-label-tab [property]="property"></gauge-label-tab>
+				</div>
+			</mat-tab>
+			<mat-tab label="{{'gauges.shape-tab-advanced' | translate}}">
+				<div class="mat-tab-container">
+					<div class="custom-tab-empty">{{'gauges.shape-tab-empty' | translate}}</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="{{'gauges.shape-tab-visibility' | translate}}">
+				<div class="mat-tab-container">
+					<div class="custom-tab-empty">{{'gauges.shape-tab-empty' | translate}}</div>
+				</div>
+			</mat-tab>
 		</mat-tab-group>
     </div>
     <div mat-dialog-actions class="dialog-action">

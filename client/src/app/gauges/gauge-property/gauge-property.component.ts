@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA as MAT_DIALOG_DATA, MatDialog as MatDialog, MatDialogRe
 import { FlexHeadComponent } from './flex-head/flex-head.component';
 import { FlexEventComponent } from './flex-event/flex-event.component';
 import { FlexActionComponent } from './flex-action/flex-action.component';
-import { GaugeProperty, GaugeSettings, View, WidgetProperty } from '../../_models/hmi';
+import { GaugeProperty, GaugeSettings, GaugeShapeStyle, IPropertyVariable, View, WidgetProperty } from '../../_models/hmi';
 import { Script } from '../../_models/script';
 import { PropertyType } from './flex-input/flex-input.component';
 import { PermissionData, PermissionDialogComponent } from './permission-dialog/permission-dialog.component';
@@ -52,6 +52,7 @@ export class GaugePropertyComponent implements AfterViewInit {
         if (!this.property) {
             this.property = new GaugeProperty();
         }
+        this.property.style = GaugeShapeStyle.withDefaults(this.property.style);
     }
 
     ngAfterViewInit() {
@@ -76,6 +77,17 @@ export class GaugePropertyComponent implements AfterViewInit {
         if (this.data.withBitmask) {
             this.withBitmask = this.data.withBitmask;
         }
+    }
+
+    onGeneralTagChange(event: IPropertyVariable) {
+        if (this.flexHead) {
+            this.flexHead.setVariable(event);
+        } else {
+            this.property.variableId = event.variableId;
+            this.property.variableValue = event.variableValue;
+            this.property.bitmask = event.bitmask;
+        }
+        this.cdr.detectChanges();
     }
 
     onNoClick(): void {

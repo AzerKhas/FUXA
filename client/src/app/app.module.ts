@@ -103,6 +103,8 @@ import { ChartPropertyComponent } from './gauges/controls/html-chart/chart-prope
 import { FlexInputComponent } from './gauges/gauge-property/flex-input/flex-input.component';
 import { FlexAuthComponent } from './gauges/gauge-property/flex-auth/flex-auth.component';
 import { FlexHeadComponent } from './gauges/gauge-property/flex-head/flex-head.component';
+import { GaugeGeneralTabComponent } from './gauges/gauge-property/custom-tabs/general-tab.component';
+import { GaugeLabelTabComponent } from './gauges/gauge-property/custom-tabs/label-tab.component';
 import { FlexEventComponent } from './gauges/gauge-property/flex-event/flex-event.component';
 import { FlexActionComponent } from './gauges/gauge-property/flex-action/flex-action.component';
 import { FlexActionsStandaloneComponent } from './gauges/gauge-property/flex-actions-standalone/flex-actions-standalone.component';
@@ -334,6 +336,8 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
         FlexDeviceTagComponent,
         FlexAuthComponent,
         FlexHeadComponent,
+        GaugeGeneralTabComponent,
+        GaugeLabelTabComponent,
         FlexEventComponent,
         FlexActionComponent,
         FlexActionsStandaloneComponent,

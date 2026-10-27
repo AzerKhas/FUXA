@@ -1,0 +1,71 @@
+<div class="custom-tab">
+    <div class="custom-tab-row">
+        <div class="custom-preview"
+             [style.border-color]="general.borderColor"
+             [style.color]="general.foreground"
+             [style.background]="general.pattern === 'solid' ? general.background : 'transparent'">
+            {{previewText}}
+        </div>
+        <div class="custom-colors">
+            <div class="my-form-field">
+                <span>{{'gauges.shape-border-color' | translate}}</span>
+                <input class="color-input" [(colorPicker)]="general.borderColor" [value]="general.borderColor" [style.background]="general.borderColor"
+                       [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+            </div>
+            <div class="my-form-field">
+                <span>{{'gauges.shape-foreground' | translate}}</span>
+                <input class="color-input" [(colorPicker)]="general.foreground" [value]="general.foreground" [style.background]="general.foreground"
+                       [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+            </div>
+            <div class="my-form-field">
+                <span>{{'gauges.shape-background' | translate}}</span>
+                <input class="color-input" [(colorPicker)]="general.background" [value]="general.background" [style.background]="general.background"
+                       [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+            </div>
+            <div class="my-form-field">
+                <span>{{'gauges.shape-pattern' | translate}}</span>
+                <mat-select [(value)]="general.pattern" style="width: 200px">
+                    <mat-option *ngFor="let p of patterns" [value]="p">{{'gauges.shape-pattern-' + p | translate}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-tab-row">
+        <div class="my-form-field">
+            <span>{{'gauges.shape-data-type' | translate}}</span>
+            <mat-select [(value)]="general.dataType" style="width: 220px">
+                <mat-option *ngFor="let t of dataTypes" [value]="t">{{'gauges.shape-data-type-' + t | translate}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="my-form-field ml10">
+            <span>{{'gauges.shape-display-type' | translate}}</span>
+            <mat-select [value]="general.dataType" [disabled]="true" style="width: 220px">
+                <mat-option *ngFor="let t of dataTypes" [value]="t">{{'gauges.shape-data-type-' + t | translate}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+
+    <div class="custom-tab-row">
+        <flex-variable [data]="data" (onchange)="onTagChange($event)"
+                       [variableId]="property.variableId" [variableValue]="property.variableValue" [bitmask]="property.bitmask"
+                       [withStaticValue]="false" [withBitmask]="false"
+                       [tagLabel]="'gauges.shape-monitor-address'">
+        </flex-variable>
+    </div>
+
+    <div class="custom-tab-row">
+        <div class="my-form-field">
+            <span>{{'gauges.shape-total-digits' | translate}}</span>
+            <input numberOnly [(ngModel)]="general.totalDigits" type="number" min="1" max="20" style="width: 80px">
+        </div>
+        <div class="my-form-field ml10">
+            <span>{{'gauges.shape-fractional-digits' | translate}}</span>
+            <input numberOnly [(ngModel)]="general.fractionalDigits" type="number" min="0" max="10" style="width: 80px">
+        </div>
+        <div class="my-form-field ml10">
+            <span>{{'gauges.shape-zero-padding' | translate}}</span>
+            <mat-slide-toggle color="primary" [(ngModel)]="general.zeroPadding"></mat-slide-toggle>
+        </div>
+    </div>
+</div>

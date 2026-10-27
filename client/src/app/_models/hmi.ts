@@ -232,6 +232,7 @@ export class GaugeProperty {
     text: string;               // Text property (used by button)
     icon?: string;              // Optional Material icon (used by button)
     image?: string;             // Optional image resource (used by button)
+    style?: GaugeShapeStyle;
 }
 
 export interface PermissionRoles {
@@ -798,3 +799,38 @@ export interface VideoOptions {
     loop?: boolean;
 }
 
+export class GaugeShapeStyle {
+    general: GaugeShapeGeneral = new GaugeShapeGeneral();
+    label: GaugeShapeLabel = new GaugeShapeLabel();
+
+    static withDefaults(style?: Partial<GaugeShapeStyle>): GaugeShapeStyle {
+        const result = new GaugeShapeStyle();
+        Object.assign(result.general, style?.general);
+        Object.assign(result.label, style?.label);
+        return result;
+    }
+}
+
+export class GaugeShapeGeneral {
+    borderColor = '#0000ff';
+    foreground = '#000000';
+    background = '#ffff00';
+    pattern: 'solid' | 'none' = 'solid';
+    dataType: 'int16' | 'uint16' | 'int32' | 'uint32' | 'float32' | 'float64' | 'bool' | 'string' = 'float32';
+    totalDigits = 5;
+    fractionalDigits = 2;
+    zeroPadding = false;
+}
+
+export class GaugeShapeLabel {
+    text = '888.88';
+    fontFamily = 'Arial';
+    fontSize = 16;
+    bold = false;
+    italic = false;
+    underline = false;
+    color = '#000000';
+    wordSpacing = 0;
+    position: 'left' | 'center' | 'right' = 'center';
+    image = '';
+}

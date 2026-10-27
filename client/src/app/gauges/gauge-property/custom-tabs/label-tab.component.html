@@ -1,0 +1,71 @@
+<div class="custom-tab">
+    <fieldset class="custom-group">
+        <legend>{{'gauges.shape-label-text' | translate}}</legend>
+        <input [(ngModel)]="label.text" type="text" style="width: 100%">
+    </fieldset>
+
+    <fieldset class="custom-group">
+        <legend>{{'gauges.shape-label-font' | translate}}</legend>
+        <div class="custom-tab-row">
+            <div class="my-form-field">
+                <span>{{'gauges.shape-font-family' | translate}}</span>
+                <mat-select [(value)]="label.fontFamily" style="width: 200px">
+                    <mat-option *ngFor="let f of fontFamilies" [value]="f">{{f}}</mat-option>
+                </mat-select>
+            </div>
+            <div class="my-form-field ml10">
+                <span>{{'gauges.shape-font-size' | translate}}</span>
+                <mat-select [(value)]="label.fontSize" style="width: 80px">
+                    <mat-option *ngFor="let s of fontSizes" [value]="s">{{s}}</mat-option>
+                </mat-select>
+            </div>
+            <div class="my-form-field ml10">
+                <span>{{'gauges.shape-bold' | translate}}</span>
+                <mat-slide-toggle color="primary" [(ngModel)]="label.bold"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="custom-tab-row">
+            <div class="my-form-field">
+                <span>{{'gauges.shape-font-color' | translate}}</span>
+                <input class="color-input" [(colorPicker)]="label.color" [value]="label.color" [style.background]="label.color"
+                       [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+            </div>
+            <div class="my-form-field ml10">
+                <span>{{'gauges.shape-word-spacing' | translate}}</span>
+                <mat-select [(value)]="label.wordSpacing" style="width: 80px">
+                    <mat-option *ngFor="let w of wordSpacings" [value]="w">{{w}}</mat-option>
+                </mat-select>
+            </div>
+            <div class="my-form-field ml10">
+                <span>{{'gauges.shape-italic' | translate}}</span>
+                <mat-slide-toggle color="primary" [(ngModel)]="label.italic"></mat-slide-toggle>
+            </div>
+            <div class="my-form-field ml10">
+                <span>{{'gauges.shape-underline' | translate}}</span>
+                <mat-slide-toggle color="primary" [(ngModel)]="label.underline"></mat-slide-toggle>
+            </div>
+        </div>
+        <div class="custom-tab-row">
+            <div class="my-form-field">
+                <span>{{'gauges.shape-position' | translate}}</span>
+                <mat-select [(value)]="label.position" style="width: 200px">
+                    <mat-option *ngFor="let p of positions" [value]="p">{{'gauges.shape-position-' + p | translate}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="custom-group">
+        <legend>{{'gauges.shape-label-image' | translate}}</legend>
+        <div class="custom-tab-row">
+            <div class="image-buttons">
+                <button mat-stroked-button (click)="clearImage()">{{'gauges.shape-image-none' | translate}}</button>
+                <button mat-stroked-button (click)="fileInput.click()">{{'gauges.shape-image-file' | translate}}</button>
+                <input #fileInput type="file" accept="image/*" style="display: none" (change)="onFileSelected($event)">
+            </div>
+            <div class="image-preview">
+                <img *ngIf="label.image" [src]="label.image" alt="">
+            </div>
+        </div>
+    </fieldset>
+</div>

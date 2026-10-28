@@ -86,11 +86,16 @@ export class ValueComponent extends GaugeBaseComponent {
                                 val = numericValue.toFixed(digit);
                             }
                         }
-                    } else if (ga.property.style && ga.property.variableId === sig.id) {
+                    } else if (ga.property.style && ShapeStyleHelper.isValueSignal(ga.property, sig.id)) {
                         // custom-SCADA: pages General and Advanced (digits, zoom, display range, ratio)
-                        const formatted = ShapeStyleHelper.formatStyledValue(sig.value, ga.property.style, g);
+                        // a tag of the page Advanced (gain, offset, min, max) refreshes the last value of the object
+                        const values = gaugeStatus.variablesValue;
+                        const formatted = ShapeStyleHelper.formatStyledValue(values[ga.property.variableId], ga.property.style, g, values);
                         if (formatted !== null) {
                             val = formatted;
+                            if (ga.property.variableId !== sig.id) {
+                                g.textContent = val + (unit ? ' ' + unit : '');
+                            }
                         }
                     }
                     if (ga.property.variableId === sig.id) {

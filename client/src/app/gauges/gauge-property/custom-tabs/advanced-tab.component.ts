@@ -4,7 +4,7 @@ import { Utils } from '../../../_helpers/utils';
 
 /**
  * custom-SCADA: page "Advanced" of the object dialog
- * (zoom = linear conversion of the value, display range, ratio display)
+ * (zoom = gain/offset conversion of the value, display range colors, ratio display; values or tags)
  */
 @Component({
     selector: 'gauge-advanced-tab',
@@ -13,6 +13,7 @@ import { Utils } from '../../../_helpers/utils';
 })
 export class GaugeAdvancedTabComponent {
 
+    @Input() data: any;
     @Input() property: GaugeProperty;
 
     defaultColor = Utils.defaultColor;

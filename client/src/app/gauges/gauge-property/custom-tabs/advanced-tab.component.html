@@ -1,52 +1,104 @@
 <div class="custom-tab">
-    <fieldset class="custom-group group-inline">
+    <fieldset class="custom-group">
         <legend>{{'gauges.shape-adv-zoom' | translate}}</legend>
         <mat-checkbox color="primary" [(ngModel)]="advanced.zoom">{{'gauges.shape-adv-zoom' | translate}}</mat-checkbox>
         <div class="sub-fields" *ngIf="advanced.zoom">
-            <div class="sub-info">{{'gauges.shape-adv-zoom-info' | translate}}</div>
+            <div class="formula">
+                <span>{{'gauges.shape-adv-formula' | translate}} :</span>
+                <div>
+                    <div>{{'gauges.shape-adv-formula-plc' | translate}}</div>
+                    <div>{{'gauges.shape-adv-formula-hmi' | translate}}</div>
+                </div>
+            </div>
+            <mat-checkbox color="primary" [(ngModel)]="advanced.zoomTransform">{{'gauges.shape-adv-transform' | translate}}</mat-checkbox>
+            <div class="my-form-field field-row mt5">
+                <span>{{'gauges.shape-adv-gain' | translate}} :</span>
+                <input *ngIf="!advanced.zoomTransform" numberOnly [(ngModel)]="advanced.zoomGain" type="number" class="field-input">
+                <flex-variable *ngIf="advanced.zoomTransform" [data]="data" [variableId]="advanced.zoomGainVariableId"
+                               (onchange)="advanced.zoomGainVariableId = $event.variableId" [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
+            </div>
             <div class="my-form-field field-row">
-                <span>{{'gauges.shape-adv-source' | translate}} :</span>
-                <input numberOnly [(ngModel)]="advanced.zoomSourceMin" type="number" class="field-number" placeholder="min">
-                <span class="field-sep">→</span>
-                <input numberOnly [(ngModel)]="advanced.zoomSourceMax" type="number" class="field-number" placeholder="max">
+                <span>{{'gauges.shape-adv-offset' | translate}} :</span>
+                <input *ngIf="!advanced.zoomTransform" numberOnly [(ngModel)]="advanced.zoomOffset" type="number" class="field-input">
+                <flex-variable *ngIf="advanced.zoomTransform" [data]="data" [variableId]="advanced.zoomOffsetVariableId"
+                               (onchange)="advanced.zoomOffsetVariableId = $event.variableId" [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
             </div>
             <div class="my-form-field field-row">
                 <span>{{'gauges.shape-adv-display' | translate}} :</span>
-                <input numberOnly [(ngModel)]="advanced.zoomDisplayMin" type="number" class="field-number" placeholder="min">
-                <span class="field-sep">→</span>
-                <input numberOnly [(ngModel)]="advanced.zoomDisplayMax" type="number" class="field-number" placeholder="max">
+                <input [(ngModel)]="advanced.zoomDisplay" type="text" class="field-input">
             </div>
         </div>
     </fieldset>
 
-    <fieldset class="custom-group group-inline">
+    <fieldset class="custom-group">
         <legend>{{'gauges.shape-adv-display-range' | translate}}</legend>
-        <div class="check-list">
-            <mat-checkbox color="primary" [(ngModel)]="advanced.displayRange">{{'gauges.shape-adv-display-range' | translate}}</mat-checkbox>
-            <mat-checkbox color="primary" [(ngModel)]="advanced.ratioDisplay">{{'gauges.shape-adv-ratio-display' | translate}}</mat-checkbox>
-        </div>
-        <div class="sub-fields" *ngIf="advanced.displayRange || advanced.ratioDisplay">
-            <div class="my-form-field field-row">
+        <mat-checkbox color="primary" [(ngModel)]="advanced.displayRange">{{'gauges.shape-adv-display-range' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="advanced.displayRange">
+            <mat-checkbox color="primary" [(ngModel)]="advanced.rangeDynamic">{{'gauges.shape-adv-dynamic-range' | translate}}</mat-checkbox>
+            <div class="my-form-field field-row mt5">
                 <span>{{'gauges.shape-adv-range-min' | translate}} :</span>
-                <input numberOnly [(ngModel)]="advanced.rangeMin" type="number" class="field-number">
+                <input *ngIf="!advanced.rangeDynamic" numberOnly [(ngModel)]="advanced.rangeMin" type="number" class="field-input">
+                <flex-variable *ngIf="advanced.rangeDynamic" [data]="data" [variableId]="advanced.rangeMinVariableId"
+                               (onchange)="advanced.rangeMinVariableId = $event.variableId" [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
             </div>
             <div class="my-form-field field-row">
                 <span>{{'gauges.shape-adv-range-max' | translate}} :</span>
-                <input numberOnly [(ngModel)]="advanced.rangeMax" type="number" class="field-number">
+                <input *ngIf="!advanced.rangeDynamic" numberOnly [(ngModel)]="advanced.rangeMax" type="number" class="field-input">
+                <flex-variable *ngIf="advanced.rangeDynamic" [data]="data" [variableId]="advanced.rangeMaxVariableId"
+                               (onchange)="advanced.rangeMaxVariableId = $event.variableId" [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
             </div>
-            <ng-container *ngIf="advanced.displayRange">
-                <div class="my-form-field field-row">
-                    <span>{{'gauges.shape-adv-below-color' | translate}} :</span>
-                    <input class="color-input color-small" [(colorPicker)]="advanced.belowColor" [style.background]="advanced.belowColor"
-                           [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
-                </div>
-                <div class="my-form-field field-row">
-                    <span>{{'gauges.shape-adv-above-color' | translate}} :</span>
-                    <input class="color-input color-small" [(colorPicker)]="advanced.aboveColor" [style.background]="advanced.aboveColor"
-                           [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
-                </div>
-            </ng-container>
-            <div class="sub-info" *ngIf="advanced.ratioDisplay">{{'gauges.shape-adv-ratio-info' | translate}}</div>
+            <div class="color-groups">
+                <fieldset class="custom-group">
+                    <legend>{{'gauges.shape-adv-high-color' | translate}}</legend>
+                    <div class="my-form-field field-row">
+                        <span>{{'gauges.shape-adv-text-color' | translate}} :</span>
+                        <input class="color-input color-box" [(colorPicker)]="advanced.highTextColor" [style.background]="advanced.highTextColor"
+                               [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+                    </div>
+                    <div class="my-form-field field-row">
+                        <span>{{'gauges.shape-adv-background-color' | translate}} :</span>
+                        <input class="color-input color-box" [(colorPicker)]="advanced.highBackgroundColor" [style.background]="advanced.highBackgroundColor"
+                               [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+                    </div>
+                </fieldset>
+                <fieldset class="custom-group">
+                    <legend>{{'gauges.shape-adv-low-color' | translate}}</legend>
+                    <div class="my-form-field field-row">
+                        <span>{{'gauges.shape-adv-text-color' | translate}} :</span>
+                        <input class="color-input color-box" [(colorPicker)]="advanced.lowTextColor" [style.background]="advanced.lowTextColor"
+                               [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+                    </div>
+                    <div class="my-form-field field-row">
+                        <span>{{'gauges.shape-adv-background-color' | translate}} :</span>
+                        <input class="color-input color-box" [(colorPicker)]="advanced.lowBackgroundColor" [style.background]="advanced.lowBackgroundColor"
+                               [cpPresetColors]="defaultColor" [cpOKButton]="true" [cpCancelButton]="true" readonly>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <mat-checkbox color="primary" [(ngModel)]="advanced.ratioDisplay" class="mt5">{{'gauges.shape-adv-ratio-display' | translate}}</mat-checkbox>
+        <div class="sub-fields" *ngIf="advanced.ratioDisplay">
+            <mat-checkbox color="primary" [(ngModel)]="advanced.ratioDynamic">{{'gauges.shape-adv-dynamic-range' | translate}}</mat-checkbox>
+            <div class="my-form-field field-row mt5">
+                <span>{{'gauges.shape-adv-range-min' | translate}} :</span>
+                <input *ngIf="!advanced.ratioDynamic" numberOnly [(ngModel)]="advanced.ratioMin" type="number" class="field-input">
+                <flex-variable *ngIf="advanced.ratioDynamic" [data]="data" [variableId]="advanced.ratioMinVariableId"
+                               (onchange)="advanced.ratioMinVariableId = $event.variableId" [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
+            </div>
+            <div class="my-form-field field-row">
+                <span>{{'gauges.shape-adv-range-max' | translate}} :</span>
+                <input *ngIf="!advanced.ratioDynamic" numberOnly [(ngModel)]="advanced.ratioMax" type="number" class="field-input">
+                <flex-variable *ngIf="advanced.ratioDynamic" [data]="data" [variableId]="advanced.ratioMaxVariableId"
+                               (onchange)="advanced.ratioMaxVariableId = $event.variableId" [withStaticValue]="false" [withBitmask]="false">
+                </flex-variable>
+            </div>
+            <div class="sub-info">{{'gauges.shape-adv-ratio-info' | translate}}</div>
         </div>
     </fieldset>
     <div class="sub-info">{{'gauges.shape-adv-value-only' | translate}}</div>

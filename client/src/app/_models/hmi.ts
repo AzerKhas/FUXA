@@ -817,16 +817,30 @@ export class GaugeShapeStyle {
 
 export class GaugeShapeAdvanced {
     zoom = false;
-    zoomSourceMin = 0;
-    zoomSourceMax = 100;
-    zoomDisplayMin = 0;
-    zoomDisplayMax = 100;
+    zoomGain = 1;
+    zoomOffset = 0;
+    /** gain and offset read from tags */
+    zoomTransform = false;
+    zoomGainVariableId = '';
+    zoomOffsetVariableId = '';
+    zoomDisplay = '*';
     displayRange = false;
+    /** min and max read from tags */
+    rangeDynamic = false;
     rangeMin = 0;
-    rangeMax = 100;
-    belowColor = '#0000ff';
-    aboveColor = '#ff0000';
+    rangeMax = 65535;
+    rangeMinVariableId = '';
+    rangeMaxVariableId = '';
+    highTextColor = '#000000';
+    highBackgroundColor = '#ff0000';
+    lowTextColor = '#000000';
+    lowBackgroundColor = '#00ff00';
     ratioDisplay = false;
+    ratioDynamic = false;
+    ratioMin = 0;
+    ratioMax = 65535;
+    ratioMinVariableId = '';
+    ratioMaxVariableId = '';
 }
 
 export type GaugeShapeCondition = 'eq' | 'ne' | 'gt' | 'ge' | 'lt' | 'le';

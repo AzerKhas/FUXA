@@ -41,3 +41,10 @@
 .custom-tab .field-condition { width: 200px; }
 .color-input.color-small { width: 120px; }
 .vis-item { margin-bottom: 10px; }
+.mt5 { margin-top: 5px; display: block; }
+.formula { display: flex; font-size: 12px; opacity: 0.8; margin-bottom: 8px; font-family: monospace; }
+.formula > span { margin-right: 8px; }
+.color-groups { display: flex; gap: 14px; margin-top: 6px; }
+.color-groups .custom-group { flex: 1; }
+.color-groups .field-row > span { width: 140px; }
+.color-input.color-box { width: 50px; }

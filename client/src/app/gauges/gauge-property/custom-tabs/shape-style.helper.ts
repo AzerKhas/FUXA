@@ -1,4 +1,4 @@
-import { GaugeSettings, GaugeShapeAdvanced, GaugeShapeCondition, GaugeShapeGeneral, GaugeShapeLabel, GaugeShapeStyle, GaugeStatus } from '../../../_models/hmi';
+import { GaugeSettings, GaugeShapeAdvanced, GaugeShapeCondition, GaugeShapeGeneral, GaugeShapeLabel, GaugeShapeStyle, GaugeShapeVisibility, GaugeStatus } from '../../../_models/hmi';
 import { Utils } from '../../../_helpers/utils';
 
 /**
@@ -70,25 +70,32 @@ export class ShapeStyleHelper {
     }
 
     /**
-     * format the value of a Value object with the pages General and Advanced (zoom, display range color, ratio)
-     * @param textElement SVG text of the value, its color is changed when the value is out of the display range
+     * format the value of a Value object with the pages General and Advanced
+     * (zoom: value x gain + offset, display range colors, ratio display; parameters as values or tags)
+     * @param textElement SVG text of the value, its colors are changed when the value is out of the display range
+     * @param values last values of the tags of the object (for the parameters read from tags)
      * @returns the formatted value, or null to keep the FUXA formatting
      */
-    static formatStyledValue(value: any, style: GaugeShapeStyle, textElement?: Element): string | null {
+    static formatStyledValue(value: any, style: GaugeShapeStyle, textElement?: Element, values: Record<string, any> = {}): string | null {
         let num = Utils.toFiniteNumber(value);
         if (num === null || !style?.general || style.general.dataType === 'string' || style.general.dataType === 'bool') {
             return null;
         }
         const advanced = style.advanced;
         if (advanced?.zoom) {
-            num = ShapeStyleHelper.scale(num, advanced.zoomSourceMin, advanced.zoomSourceMax, advanced.zoomDisplayMin, advanced.zoomDisplayMax);
+            const gain = ShapeStyleHelper.getParameter(advanced.zoomGain, advanced.zoomTransform, advanced.zoomGainVariableId, values);
+            const offset = ShapeStyleHelper.getParameter(advanced.zoomOffset, advanced.zoomTransform, advanced.zoomOffsetVariableId, values);
+            num = num * (gain ?? 1) + (offset ?? 0);
         }
         if (textElement) {
-            ShapeStyleHelper.setRangeColor(textElement, num, advanced);
+            const min = ShapeStyleHelper.getParameter(advanced?.rangeMin, advanced?.rangeDynamic, advanced?.rangeMinVariableId, values);
+            const max = ShapeStyleHelper.getParameter(advanced?.rangeMax, advanced?.rangeDynamic, advanced?.rangeMaxVariableId, values);
+            ShapeStyleHelper.setRangeColors(textElement, num, advanced?.displayRange ? min : null, advanced?.displayRange ? max : null, advanced);
         }
         if (advanced?.ratioDisplay) {
-            const min = Number(advanced.rangeMin), max = Number(advanced.rangeMax);
-            if (max !== min) {
+            const min = ShapeStyleHelper.getParameter(advanced.ratioMin, advanced.ratioDynamic, advanced.ratioMinVariableId, values);
+            const max = ShapeStyleHelper.getParameter(advanced.ratioMax, advanced.ratioDynamic, advanced.ratioMaxVariableId, values);
+            if (min !== null && max !== null && max !== min) {
                 const ratio = (num - min) / (max - min) * 100;
                 return ratio.toFixed(Math.max(0, Number(style.general.fractionalDigits) || 0)) + ' %';
             }
@@ -96,20 +103,52 @@ export class ShapeStyleHelper {
         return ShapeStyleHelper.formatValue(num, style.general);
     }
 
-    /** tags used by the page Visibility, to add to the signals of the object */
-    static addVisibilitySignals(signals: string[] | null, property: any): string[] | null {
-        const visibility = property?.style?.visibility;
-        const ids = [];
+    /** tags used by the pages Advanced and Visibility, to add to the signals of the object */
+    static addStyleSignals(signals: string[] | null, property: any): string[] | null {
+        const ids = ShapeStyleHelper.getStyleSignals(property);
+        if (!ids.length) {
+            return signals;
+        }
+        return [...(signals || []), ...ids.filter(id => !signals?.includes(id))];
+    }
+
+    /** true if the signal is the tag of the value or a tag of the page Advanced (the value must be refreshed) */
+    static isValueSignal(property: any, signalId: string): boolean {
+        return property?.variableId === signalId || ShapeStyleHelper.getAdvancedSignals(property?.style?.advanced).includes(signalId);
+    }
+
+    private static getStyleSignals(property: any): string[] {
+        const visibility: GaugeShapeVisibility = property?.style?.visibility;
+        const ids = ShapeStyleHelper.getAdvancedSignals(property?.style?.advanced);
         if (visibility?.byBit && visibility.bitVariableId) {
             ids.push(visibility.bitVariableId);
         }
         if (visibility?.byWord && visibility.wordVariableId) {
             ids.push(visibility.wordVariableId);
         }
-        if (!ids.length) {
-            return signals;
+        return ids;
+    }
+
+    private static getAdvancedSignals(advanced: GaugeShapeAdvanced): string[] {
+        const ids = [];
+        if (advanced?.zoom && advanced.zoomTransform) {
+            ids.push(advanced.zoomGainVariableId, advanced.zoomOffsetVariableId);
         }
-        return [...(signals || []), ...ids.filter(id => !signals?.includes(id))];
+        if (advanced?.displayRange && advanced.rangeDynamic) {
+            ids.push(advanced.rangeMinVariableId, advanced.rangeMaxVariableId);
+        }
+        if (advanced?.ratioDisplay && advanced.ratioDynamic) {
+            ids.push(advanced.ratioMinVariableId, advanced.ratioMaxVariableId);
+        }
+        return ids.filter(id => !!id);
+    }
+
+    /** value of a parameter: the fixed value, or the last value of its tag (null if not yet received) */
+    private static getParameter(fixed: any, fromTag: boolean, variableId: string, values: Record<string, any>): number | null {
+        if (fromTag) {
+            return variableId ? Utils.toFiniteNumber(values[variableId]) : null;
+        }
+        return Utils.toFiniteNumber(fixed);
     }
 
     /**
@@ -149,14 +188,6 @@ export class ShapeStyleHelper {
         }
     }
 
-    private static scale(value: number, srcMin: number, srcMax: number, dstMin: number, dstMax: number): number {
-        srcMin = Number(srcMin); srcMax = Number(srcMax); dstMin = Number(dstMin); dstMax = Number(dstMax);
-        if (srcMax === srcMin) {
-            return value;
-        }
-        return dstMin + (value - srcMin) * (dstMax - dstMin) / (srcMax - srcMin);
-    }
-
     private static compare(value: number, condition: GaugeShapeCondition, reference: number): boolean {
         switch (condition) {
             case 'ne': return value !== reference;
@@ -168,24 +199,62 @@ export class ShapeStyleHelper {
         }
     }
 
-    /** color of the text when the value is out of the display range, the original color is kept in data-fill */
-    private static setRangeColor(textElement: Element, value: number, advanced: GaugeShapeAdvanced) {
+    /**
+     * text and background colors when the value is above the max (high) or below the min (low)
+     * the original text color is kept in data-fill, the background is a rect placed just before the object
+     */
+    private static setRangeColors(textElement: Element, value: number, min: number | null, max: number | null, advanced: GaugeShapeAdvanced) {
         if (!textElement.hasAttribute('data-fill')) {
             textElement.setAttribute('data-fill', textElement.getAttribute('fill') || '');
         }
         let color = textElement.getAttribute('data-fill');
-        if (advanced?.displayRange) {
-            if (value < Number(advanced.rangeMin)) {
-                color = advanced.belowColor;
-            } else if (value > Number(advanced.rangeMax)) {
-                color = advanced.aboveColor;
-            }
+        let background: string = null;
+        if (max !== null && value > max) {
+            color = advanced.highTextColor;
+            background = advanced.highBackgroundColor;
+        } else if (min !== null && value < min) {
+            color = advanced.lowTextColor;
+            background = advanced.lowBackgroundColor;
         }
         if (color) {
             textElement.setAttribute('fill', color);
         } else {
             textElement.removeAttribute('fill');
         }
+        ShapeStyleHelper.setBackground(textElement, background);
+    }
+
+    private static setBackground(textElement: Element, color: string | null) {
+        const group = textElement.parentElement as unknown as SVGGraphicsElement;
+        if (!group?.id || !group.parentNode) {
+            return;
+        }
+        const id = `${group.id}_bg`;
+        let rect = document.getElementById(id);
+        if (!color) {
+            rect?.remove();
+            return;
+        }
+        if (!rect) {
+            rect = document.createElementNS(ShapeStyleHelper.svgNs, 'rect') as unknown as HTMLElement;
+            rect.id = id;
+            group.parentNode.insertBefore(rect, group);
+        }
+        rect.setAttribute('fill', color);
+        // measured after the new text is written in the object
+        Promise.resolve().then(() => {
+            try {
+                const box = group.getBBox();
+                const padding = 3;
+                rect.setAttribute('x', String(box.x - padding));
+                rect.setAttribute('y', String(box.y - padding));
+                rect.setAttribute('width', String(box.width + padding * 2));
+                rect.setAttribute('height', String(box.height + padding * 2));
+                rect.setAttribute('transform', group.getAttribute('transform') || '');
+            } catch (err) {
+                // getBBox fails when the object is not rendered (hidden view)
+            }
+        });
     }
 
     private static setTextAttributes(element: Element, label: GaugeShapeLabel) {

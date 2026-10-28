@@ -457,8 +457,8 @@ export class GaugesManager {
      * @param ga
      */
     getBindSignals(gaugeSettings: GaugeSettings, sourceDeviceTags?: Tag[]) {
-        // custom-SCADA: add the tags of the page Visibility
-        return ShapeStyleHelper.addVisibilitySignals(this.getBindSignalsFuxa(gaugeSettings, sourceDeviceTags), gaugeSettings.property);
+        // custom-SCADA: add the tags of the pages Advanced and Visibility
+        return ShapeStyleHelper.addStyleSignals(this.getBindSignalsFuxa(gaugeSettings, sourceDeviceTags), gaugeSettings.property);
     }
 
     private getBindSignalsFuxa(gaugeSettings: GaugeSettings, sourceDeviceTags?: Tag[]) {

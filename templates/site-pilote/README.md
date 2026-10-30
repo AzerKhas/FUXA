@@ -7,7 +7,7 @@ Fichier : `site-pilote.fuxap`.
 
 | Page | Contenu |
 |---|---|
-| **Accueil** (page de démarrage) | Titre du site, 4 zones de texte, 4 cases à cocher (Valider, Marche, Arrêt, Mode automatique), réservoir avec niveau, 3 pompes (grises à l'arrêt, vertes en marche), 2 vannes, débit de refoulement, bâche à eau, voyant et bouton d'alarme, boutons Historique / Courbes / Alarmes |
+| **Accueil** (page de démarrage) | Titre du site, 4 zones de texte, 4 cases à cocher (Valider, Marche, Arrêt, Mode automatique), réservoir avec niveau, barre de niveau et volume, 3 pompes (grises à l'arrêt, vertes en marche) avec leur pression, 2 vannes, débit de refoulement, bâche à eau avec barre de niveau et volume, voyant et bouton d'alarme, boutons Historique / Courbes / Alarmes |
 | **Historique** | Tableau de l'historique (Date / Heure, Niveau réservoir, Débit) avec choix de la période et export, bouton ⬅ Accueil |
 | **Courbes** | Courbe « Tendances » (niveau en bleu, débit en orange) avec choix de la période, bouton ⬅ Accueil |
 | **Alarmes et événements** | Page d'alarmes intégrée à FUXA (menu et bouton Alarmes) |
@@ -30,7 +30,10 @@ Tous les tags sont sur l'équipement interne **FUXA Server**. Ils sont **proviso
 | `reservoir_niveau` | number | Réservoir, valeur « niveau » (m), historique et courbe (enregistré) |
 | `bache_niveau` | number | Bâche à eau |
 | `debit_refoulement` | number | Valeur « débit » (L/s), historique et courbe (enregistré) |
+| `reservoir_volume` | number | Volume du réservoir (m3), cadre jaune au-dessus du réservoir |
+| `bache_volume` | number | Volume de la bâche à eau (m3), cadre jaune à côté de la bâche |
 | `pompe1_etat`, `pompe2_etat`, `pompe3_etat` | boolean | Couleur des pompes 1 à 3 (0 = gris, 1 = vert) |
+| `pompe1_pression`, `pompe2_pression`, `pompe3_pression` | number | Pression des pompes 1 à 3 (bar), cadre jaune sous chaque pompe |
 | `cmd_valider`, `cmd_marche`, `cmd_arret`, `mode_auto` | boolean | Cases à cocher Valider, Marche, Arrêt, Mode automatique |
 | `alarme_generale` | boolean | Voyant d'alarme (0 = vert, 1 = rouge) |
 | `texte_1` … `texte_4` | string | Zones de texte 1 à 4 |
@@ -52,3 +55,4 @@ Tous les tags sont sur l'équipement interne **FUXA Server**. Ils sont **proviso
 - FUXA n'a pas d'objet « case à cocher » : les cases sont des interrupteurs (Switch) liés à un tag booléen.
 - Le bouton « Alarmes » de la page Accueil ouvre la page d'alarmes grâce à une petite modification du code (`fuxa-view.component.ts`, lien `[alarms]`). Dans la fenêtre Events de l'éditeur, cette destination n'apparaît pas dans la liste des pages.
 - Aucune alarme n'est encore définie (seuils à fournir par l'exploitant).
+- Les barres de niveau du réservoir et de la bâche vont de 0 à 5 m : **valeur à régler** selon la hauteur réelle (clic sur la barre → Property).

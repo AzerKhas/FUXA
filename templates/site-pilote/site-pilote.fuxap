@@ -1,0 +1,1013 @@
+{
+ "devices": {
+  "0": {
+   "id": "0",
+   "name": "FUXA Server",
+   "type": "FuxaServer",
+   "property": {
+    "port": null,
+    "slot": null,
+    "rack": null,
+    "baudrate": 9600,
+    "databits": 8,
+    "stopbits": 1,
+    "parity": "None",
+    "forceFC16": false,
+    "timeout": 2000
+   },
+   "polling": 1000,
+   "enabled": true,
+   "tags": {
+    "t_reservoir_niveau": {
+     "id": "t_reservoir_niveau",
+     "name": "reservoir_niveau",
+     "value": 0,
+     "type": "number",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Niveau du réservoir (m) - provisoire"
+    },
+    "t_bache_niveau": {
+     "id": "t_bache_niveau",
+     "name": "bache_niveau",
+     "value": 0,
+     "type": "number",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Niveau de la bâche à eau (m) - provisoire"
+    },
+    "t_debit_refoulement": {
+     "id": "t_debit_refoulement",
+     "name": "debit_refoulement",
+     "value": 0,
+     "type": "number",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Débit de refoulement (L/s) - provisoire"
+    },
+    "t_pompe1_etat": {
+     "id": "t_pompe1_etat",
+     "name": "pompe1_etat",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Pompe 1 en marche - provisoire"
+    },
+    "t_pompe2_etat": {
+     "id": "t_pompe2_etat",
+     "name": "pompe2_etat",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Pompe 2 en marche - provisoire"
+    },
+    "t_pompe3_etat": {
+     "id": "t_pompe3_etat",
+     "name": "pompe3_etat",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Pompe 3 en marche - provisoire"
+    },
+    "t_cmd_valider": {
+     "id": "t_cmd_valider",
+     "name": "cmd_valider",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Commande Valider - provisoire"
+    },
+    "t_cmd_marche": {
+     "id": "t_cmd_marche",
+     "name": "cmd_marche",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Commande Marche - provisoire"
+    },
+    "t_cmd_arret": {
+     "id": "t_cmd_arret",
+     "name": "cmd_arret",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Commande Arrêt - provisoire"
+    },
+    "t_mode_auto": {
+     "id": "t_mode_auto",
+     "name": "mode_auto",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Mode automatique - provisoire"
+    },
+    "t_alarme_generale": {
+     "id": "t_alarme_generale",
+     "name": "alarme_generale",
+     "value": 0,
+     "type": "boolean",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "0",
+     "description": "Alarme générale - provisoire"
+    },
+    "t_texte_1": {
+     "id": "t_texte_1",
+     "name": "texte_1",
+     "value": "",
+     "type": "string",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "",
+     "description": "Zone de texte 1 - provisoire"
+    },
+    "t_texte_2": {
+     "id": "t_texte_2",
+     "name": "texte_2",
+     "value": "",
+     "type": "string",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "",
+     "description": "Zone de texte 2 - provisoire"
+    },
+    "t_texte_3": {
+     "id": "t_texte_3",
+     "name": "texte_3",
+     "value": "",
+     "type": "string",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "",
+     "description": "Zone de texte 3 - provisoire"
+    },
+    "t_texte_4": {
+     "id": "t_texte_4",
+     "name": "texte_4",
+     "value": "",
+     "type": "string",
+     "daq": {
+      "enabled": false,
+      "interval": 60,
+      "changed": false,
+      "restored": false
+     },
+     "init": "",
+     "description": "Zone de texte 4 - provisoire"
+    }
+   }
+  }
+ },
+ "hmi": {
+  "views": [
+   {
+    "id": "v_site_accueil",
+    "name": "Accueil",
+    "type": "svg",
+    "profile": {
+     "width": 1280,
+     "height": 720,
+     "bkcolor": "#C1DDAAff",
+     "margin": 10,
+     "align": "topCenter",
+     "gridType": "fixed",
+     "viewRenderDelay": 0
+    },
+    "items": {
+     "SHE_401fde7e-d22c4f7d": {
+      "id": "SHE_401fde7e-d22c4f7d",
+      "type": "svg-ext-proceng-tank1",
+      "name": "reservoir",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_reservoir_niveau",
+       "ranges": []
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     },
+     "HXI_5844c96d-7e564609": {
+      "id": "HXI_5844c96d-7e564609",
+      "type": "svg-ext-html_input",
+      "name": "zone_texte_1",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_texte_1",
+       "options": {
+        "type": "text"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXI_0ab17e44-185b414e": {
+      "id": "HXI_0ab17e44-185b414e",
+      "type": "svg-ext-html_input",
+      "name": "zone_texte_2",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_texte_2",
+       "options": {
+        "type": "text"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXI_64e2451b-4e6045f2": {
+      "id": "HXI_64e2451b-4e6045f2",
+      "type": "svg-ext-html_input",
+      "name": "zone_texte_3",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_texte_3",
+       "options": {
+        "type": "text"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXI_0478ee71-eba94daf": {
+      "id": "HXI_0478ee71-eba94daf",
+      "type": "svg-ext-html_input",
+      "name": "zone_texte_4",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_texte_4",
+       "options": {
+        "type": "text"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXT_c0634d38-81a64201": {
+      "id": "HXT_c0634d38-81a64201",
+      "type": "svg-ext-html_switch",
+      "name": "case_valider",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_cmd_valider",
+       "options": {
+        "offValue": 0,
+        "onValue": 1,
+        "offBackground": "#BDBDBD",
+        "onBackground": "#0CC868",
+        "offText": "",
+        "onText": "",
+        "offSliderColor": "#ffffff",
+        "onSliderColor": "#ffffff",
+        "offTextColor": "#000000",
+        "onTextColor": "#ffffff",
+        "fontSize": 12,
+        "fontFamily": "",
+        "radius": 3,
+        "height": 24
+       }
+      },
+      "label": "HtmlSwitch",
+      "hide": false,
+      "lock": false
+     },
+     "HXT_94944a90-2b3246c2": {
+      "id": "HXT_94944a90-2b3246c2",
+      "type": "svg-ext-html_switch",
+      "name": "case_marche",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_cmd_marche",
+       "options": {
+        "offValue": 0,
+        "onValue": 1,
+        "offBackground": "#BDBDBD",
+        "onBackground": "#0CC868",
+        "offText": "",
+        "onText": "",
+        "offSliderColor": "#ffffff",
+        "onSliderColor": "#ffffff",
+        "offTextColor": "#000000",
+        "onTextColor": "#ffffff",
+        "fontSize": 12,
+        "fontFamily": "",
+        "radius": 3,
+        "height": 24
+       }
+      },
+      "label": "HtmlSwitch",
+      "hide": false,
+      "lock": false
+     },
+     "HXT_e2421e1f-55224585": {
+      "id": "HXT_e2421e1f-55224585",
+      "type": "svg-ext-html_switch",
+      "name": "case_arret",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_cmd_arret",
+       "options": {
+        "offValue": 0,
+        "onValue": 1,
+        "offBackground": "#BDBDBD",
+        "onBackground": "#0CC868",
+        "offText": "",
+        "onText": "",
+        "offSliderColor": "#ffffff",
+        "onSliderColor": "#ffffff",
+        "offTextColor": "#000000",
+        "onTextColor": "#ffffff",
+        "fontSize": 12,
+        "fontFamily": "",
+        "radius": 3,
+        "height": 24
+       }
+      },
+      "label": "HtmlSwitch",
+      "hide": false,
+      "lock": false
+     },
+     "HXT_ad96bfcb-948b4de9": {
+      "id": "HXT_ad96bfcb-948b4de9",
+      "type": "svg-ext-html_switch",
+      "name": "case_mode_auto",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_mode_auto",
+       "options": {
+        "offValue": 0,
+        "onValue": 1,
+        "offBackground": "#BDBDBD",
+        "onBackground": "#0CC868",
+        "offText": "",
+        "onText": "",
+        "offSliderColor": "#ffffff",
+        "onSliderColor": "#ffffff",
+        "offTextColor": "#000000",
+        "onTextColor": "#ffffff",
+        "fontSize": 12,
+        "fontFamily": "",
+        "radius": 3,
+        "height": 24
+       }
+      },
+      "label": "HtmlSwitch",
+      "hide": false,
+      "lock": false
+     },
+     "VAL_130edbae-dbd94970": {
+      "id": "VAL_130edbae-dbd94970",
+      "type": "svg-ext-value",
+      "name": "niveau_reservoir",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_reservoir_niveau",
+       "ranges": [
+        {
+         "type": "unit",
+         "min": 0,
+         "max": 0,
+         "text": "m"
+        }
+       ]
+      },
+      "label": "Value",
+      "hide": false,
+      "lock": false
+     },
+     "VAL_9a6e5dd1-90b64fc1": {
+      "id": "VAL_9a6e5dd1-90b64fc1",
+      "type": "svg-ext-value",
+      "name": "debit_refoulement",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_debit_refoulement",
+       "ranges": [
+        {
+         "type": "unit",
+         "min": 0,
+         "max": 0,
+         "text": "L/s"
+        }
+       ]
+      },
+      "label": "Value",
+      "hide": false,
+      "lock": false
+     },
+     "SHE_c5123865-cf5f45d7": {
+      "id": "SHE_c5123865-cf5f45d7",
+      "type": "svg-ext-proceng-pumpcentri1",
+      "name": "pompe_1",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_pompe1_etat",
+       "ranges": [
+        {
+         "min": 0,
+         "max": 0,
+         "color": "#9E9E9E",
+         "stroke": "#424242"
+        },
+        {
+         "min": 1,
+         "max": 1,
+         "color": "#2E7D32",
+         "stroke": "#1B5E20"
+        }
+       ]
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     },
+     "SHE_52a0a0cd-2d104dd5": {
+      "id": "SHE_52a0a0cd-2d104dd5",
+      "type": "svg-ext-proceng-pumpcentri1",
+      "name": "pompe_2",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_pompe2_etat",
+       "ranges": [
+        {
+         "min": 0,
+         "max": 0,
+         "color": "#9E9E9E",
+         "stroke": "#424242"
+        },
+        {
+         "min": 1,
+         "max": 1,
+         "color": "#2E7D32",
+         "stroke": "#1B5E20"
+        }
+       ]
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     },
+     "SHE_b00121f8-508a41c3": {
+      "id": "SHE_b00121f8-508a41c3",
+      "type": "svg-ext-proceng-pumpcentri2",
+      "name": "pompe_3",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_pompe3_etat",
+       "ranges": [
+        {
+         "min": 0,
+         "max": 0,
+         "color": "#9E9E9E",
+         "stroke": "#424242"
+        },
+        {
+         "min": 1,
+         "max": 1,
+         "color": "#2E7D32",
+         "stroke": "#1B5E20"
+        }
+       ]
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     },
+     "SHE_e11d5d50-60764c19": {
+      "id": "SHE_e11d5d50-60764c19",
+      "type": "svg-ext-proceng-tank5",
+      "name": "bache_a_eau",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_bache_niveau",
+       "ranges": []
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     },
+     "GSE_42edffab-1eed4304": {
+      "id": "GSE_42edffab-1eed4304",
+      "type": "svg-ext-gauge_semaphore",
+      "name": "voyant_alarme",
+      "property": {
+       "events": [],
+       "actions": [],
+       "variableId": "t_alarme_generale",
+       "ranges": [
+        {
+         "min": 0,
+         "max": 0,
+         "color": "#4CAF50",
+         "stroke": ""
+        },
+        {
+         "min": 1,
+         "max": 1,
+         "color": "#F44336",
+         "stroke": ""
+        }
+       ]
+      },
+      "label": "HtmlSemaphore",
+      "hide": false,
+      "lock": false
+     },
+     "HXB_df9cc6d0-531345a4": {
+      "id": "HXB_df9cc6d0-531345a4",
+      "type": "svg-ext-html_button",
+      "name": "btn_alarme",
+      "property": {
+       "events": [
+        {
+         "type": "click",
+         "action": "onpage",
+         "actparam": "[alarms]",
+         "actoptions": {}
+        }
+       ],
+       "actions": [],
+       "text": "ALARME"
+      },
+      "label": "HtmlButton",
+      "hide": false,
+      "lock": false
+     },
+     "HXB_49656139-d1674b43": {
+      "id": "HXB_49656139-d1674b43",
+      "type": "svg-ext-html_button",
+      "name": "btn_historique",
+      "property": {
+       "events": [
+        {
+         "type": "click",
+         "action": "onpage",
+         "actparam": "v_site_historique",
+         "actoptions": {}
+        }
+       ],
+       "actions": [],
+       "text": "HISTORIQUE"
+      },
+      "label": "HtmlButton",
+      "hide": false,
+      "lock": false
+     },
+     "HXB_fff6ab44-8add413f": {
+      "id": "HXB_fff6ab44-8add413f",
+      "type": "svg-ext-html_button",
+      "name": "btn_courbes",
+      "property": {
+       "events": [
+        {
+         "type": "click",
+         "action": "onpage",
+         "actparam": "v_site_courbes",
+         "actoptions": {}
+        }
+       ],
+       "actions": [],
+       "text": "COURBES"
+      },
+      "label": "HtmlButton",
+      "hide": false,
+      "lock": false
+     },
+     "HXB_1aa5e594-ee994e30": {
+      "id": "HXB_1aa5e594-ee994e30",
+      "type": "svg-ext-html_button",
+      "name": "btn_alarmes",
+      "property": {
+       "events": [
+        {
+         "type": "click",
+         "action": "onpage",
+         "actparam": "[alarms]",
+         "actoptions": {}
+        }
+       ],
+       "actions": [],
+       "text": "ALARMES"
+      },
+      "label": "HtmlButton",
+      "hide": false,
+      "lock": false
+     },
+     "SHE_9260de4d-a70241d0": {
+      "id": "SHE_9260de4d-a70241d0",
+      "type": "svg-ext-proceng-valvecx",
+      "name": "vanne_1",
+      "property": {
+       "events": [],
+       "actions": []
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     },
+     "SHE_05c08322-31694d11": {
+      "id": "SHE_05c08322-31694d11",
+      "type": "svg-ext-proceng-valvecx",
+      "name": "vanne_2",
+      "property": {
+       "events": [],
+       "actions": []
+      },
+      "label": "Proc-Eng",
+      "hide": false,
+      "lock": false
+     }
+    },
+    "variables": {},
+    "svgcontent": "<svg width=\"1280\" height=\"720\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:html=\"http://www.w3.org/1999/xhtml\">\n <filter height=\"200\" width=\"200\" y=\"-3\" x=\"-3\" id=\"blur-filter\">\n  <feGaussianBlur stdDeviation=\"3\"/>\n </filter>\n <g>\n  <title>Layer 1</title>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#263238\" fill=\"#455A64\" type=\"svg-ext-proceng-tank1\" id=\"SHE_401fde7e-d22c4f7d\">\n   <path d=\"M500.5,120.25L660.5,120.25L680.5,160.25L700.5,160.25L700.5,200.25L680.5,200.25L660.5,240.25L500.5,240.25L500.5,120.25z\" id=\"SHE_c570e833-b94f4d02\"/>\n  </g>\n  <g stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_5844c96d-7e564609\">\n   <rect id=\"svg_0f4a3690-dc5b4669\" height=\"30\" width=\"200\" y=\"70\" x=\"20\" stroke-width=\"0.5\"/>\n   <foreignObject id=\"H-HXI_efef8a23-2a4b474b\" width=\"200\" height=\"30\" y=\"70\" x=\"20\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_efef8a23-2a4b474b\"/>\n   </foreignObject>\n  </g>\n  <g stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_0ab17e44-185b414e\">\n   <rect id=\"svg_7f80ddff-89e4426d\" height=\"30\" width=\"200\" y=\"115\" x=\"20\" stroke-width=\"0.5\"/>\n   <foreignObject id=\"H-HXI_cec2d973-057a45c7\" width=\"200\" height=\"30\" y=\"115\" x=\"20\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_cec2d973-057a45c7\"/>\n   </foreignObject>\n  </g>\n  <g stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_64e2451b-4e6045f2\">\n   <rect id=\"svg_02acc849-2e9c41d3\" height=\"30\" width=\"200\" y=\"160\" x=\"20\" stroke-width=\"0.5\"/>\n   <foreignObject id=\"H-HXI_d4f656ea-4e524336\" width=\"200\" height=\"30\" y=\"160\" x=\"20\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_d4f656ea-4e524336\"/>\n   </foreignObject>\n  </g>\n  <g stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_0478ee71-eba94daf\">\n   <rect id=\"svg_071ad9f9-34c4498d\" height=\"30\" width=\"200\" y=\"205\" x=\"20\" stroke-width=\"0.5\"/>\n   <foreignObject id=\"H-HXI_e336557c-2bd2407f\" width=\"200\" height=\"30\" y=\"205\" x=\"20\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_e336557c-2bd2407f\"/>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_switch\" id=\"HXT_c0634d38-81a64201\">\n   <rect id=\"svg_1f5ccbf1-2c204900\" height=\"30\" width=\"60\" y=\"270\" x=\"165\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXT_ba2d83b9-4c904a7a\" width=\"60\" height=\"30\" y=\"270\" x=\"165\">\n    <LABEL style=\"width: calc(100% - 6px); height: calc(100% - 6px); text-align: center; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin: 3px; border-radius: 3px;\" class=\"md-switch\" id=\"T-HXT_ba2d83b9-4c904a7a\">\n     <LABEL class=\"md-switch\">\n      <DIV class=\"toggle-button\">\n       <INPUT type=\"checkbox\"/>\n       <DIV class=\"inner-circle\"></DIV>\n      </DIV>\n     </LABEL>\n    </LABEL>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_switch\" id=\"HXT_94944a90-2b3246c2\">\n   <rect id=\"svg_f1adc7b4-3c21451e\" height=\"30\" width=\"60\" y=\"315\" x=\"165\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXT_e7985239-91684405\" width=\"60\" height=\"30\" y=\"315\" x=\"165\">\n    <LABEL style=\"width: calc(100% - 6px); height: calc(100% - 6px); text-align: center; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin: 3px; border-radius: 3px;\" class=\"md-switch\" id=\"T-HXT_e7985239-91684405\">\n     <LABEL class=\"md-switch\">\n      <DIV class=\"toggle-button\">\n       <INPUT type=\"checkbox\"/>\n       <DIV class=\"inner-circle\"></DIV>\n      </DIV>\n     </LABEL>\n    </LABEL>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_switch\" id=\"HXT_e2421e1f-55224585\">\n   <rect id=\"svg_97929d4d-00d646f6\" height=\"30\" width=\"60\" y=\"360\" x=\"165\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXT_517db284-32784c76\" width=\"60\" height=\"30\" y=\"360\" x=\"165\">\n    <LABEL style=\"width: calc(100% - 6px); height: calc(100% - 6px); text-align: center; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin: 3px; border-radius: 3px;\" class=\"md-switch\" id=\"T-HXT_517db284-32784c76\">\n     <LABEL class=\"md-switch\">\n      <DIV class=\"toggle-button\">\n       <INPUT type=\"checkbox\"/>\n       <DIV class=\"inner-circle\"></DIV>\n      </DIV>\n     </LABEL>\n    </LABEL>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_switch\" id=\"HXT_ad96bfcb-948b4de9\">\n   <rect id=\"svg_4d15f960-87c3419f\" height=\"30\" width=\"60\" y=\"405\" x=\"165\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXT_72ce069d-80604cee\" width=\"60\" height=\"30\" y=\"405\" x=\"165\">\n    <LABEL style=\"width: calc(100% - 6px); height: calc(100% - 6px); text-align: center; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); margin: 3px; border-radius: 3px;\" class=\"md-switch\" id=\"T-HXT_72ce069d-80604cee\">\n     <LABEL class=\"md-switch\">\n      <DIV class=\"toggle-button\">\n       <INPUT type=\"checkbox\"/>\n       <DIV class=\"inner-circle\"></DIV>\n      </DIV>\n     </LABEL>\n    </LABEL>\n   </foreignObject>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" stroke-width=\"0\" font-size=\"14\" stroke=\"#000000\" fill=\"#000000\" type=\"svg-ext-value\" id=\"VAL_130edbae-dbd94970\">\n   <text y=\"185\" x=\"580\" xml:space=\"preserve\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#000000\" id=\"VAL_b7e36d99-78fb4f8d\" stroke-width=\"0\">##.##</text>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" stroke-width=\"0\" font-size=\"14\" stroke=\"#000000\" fill=\"#000000\" type=\"svg-ext-value\" id=\"VAL_9a6e5dd1-90b64fc1\">\n   <text y=\"400\" x=\"905\" xml:space=\"preserve\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#000000\" id=\"VAL_f4c9b608-d7bf41de\" stroke-width=\"0\">##.##</text>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-proceng-pumpcentri1\" id=\"SHE_c5123865-cf5f45d7\">\n   <path d=\"M152.43,551.2443C155.32672,533.27799 170.1619,520.11721 187.5924,520L235.42999,520L235.42999,544.99879L221.61619,544.99879C226.17056,558.36049 223.12315,573.26265 213.72977,583.50997C204.33639,593.7573 190.20446,597.59167 177.22786,593.40568C164.25127,589.21968 154.65696,577.7333 152.43,563.73532\" id=\"SHE_7a34ed92-dbaa48d3\"/>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-proceng-pumpcentri1\" id=\"SHE_52a0a0cd-2d104dd5\">\n   <path d=\"M320.43001,552.37361C323.43142,533.75792 338.80281,520.12144 356.86333,520L406.42999,520L406.42999,545.90236L392.1169,545.90236C396.83588,559.74702 393.67833,575.18781 383.94543,585.80552C374.21253,596.42323 359.5698,600.39619 346.12417,596.05889C332.67854,591.72159 322.73745,579.82004 320.43001,565.31611\" id=\"SHE_4036480c-50d34e49\"/>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-proceng-pumpcentri2\" id=\"SHE_b00121f8-508a41c3\">\n   <path d=\"M965.99998,280.62537C963.03347,263.03207 947.84082,250.10288 929.99031,250L881,250L881,274.50373L895.14666,274.50373C890.48255,287.60439 893.60339,302.21403 903.22311,312.26244C912.84284,322.31086 927.3153,326.04901 940.60459,321.95076C953.89387,317.85252 963.71937,306.58663 965.99998,292.86866\" id=\"SHE_9a052f06-8efd4fbf\"/>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#01579B\" fill=\"#29B6F6\" type=\"svg-ext-proceng-tank5\" id=\"SHE_e11d5d50-60764c19\">\n   <path d=\"M1066.78948,535.01368L1066.78948,685.98632C1066.78948,694.00106 1049.83158,700.5 1028.89474,700.5C1007.9579,700.5 991,694.00106 991,685.98632L991,535.01368C991,526.99895 1007.9579,520.5 1028.89474,520.5C1049.83158,520.5 1066.78948,526.99895 1066.78948,535.01368zM991,535.01368L1066.78948,535.01368M991,685.98632L1066.78948,685.98632\" id=\"SHE_ba9a6198-03934dd6\"/>\n  </g>\n  <g font-family=\"sans-serif\" stroke=\"#000000\" font-size=\"14\" fill=\"#FFFFFF\" type=\"svg-ext-gauge_semaphore\" id=\"GSE_42edffab-1eed4304\">\n   <ellipse stroke=\"#000000\" fill=\"#FFFFFF\" ry=\"14\" rx=\"14\" cy=\"436\" cx=\"1058\" id=\"GSE_dd3d36f5-c31b4393\"/>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_button\" id=\"HXB_df9cc6d0-531345a4\">\n   <rect id=\"svg_137d8c25-ba3e49a2\" height=\"32\" width=\"140\" y=\"420\" x=\"1085\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXB_2d8ec2c2-bc404dd4\" width=\"140\" height=\"32\" y=\"420\" x=\"1085\">\n    <BUTTON style=\"width:calc(100% - 6px);height:calc(100% - 6px);text-align:center;background-color:#FFFFFF;color:#000000;font-size:14px;font-family:sans-serif;\" class=\"md-btn  md-btn-raised\" id=\"B-HXB_2d8ec2c2-bc404dd4\">ALARME</BUTTON>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_button\" id=\"HXB_49656139-d1674b43\">\n   <rect id=\"svg_7628e518-bcf943b1\" height=\"32\" width=\"170\" y=\"70\" x=\"1090\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXB_c0fc2b06-c20a47db\" width=\"170\" height=\"32\" y=\"70\" x=\"1090\">\n    <BUTTON style=\"width:calc(100% - 6px);height:calc(100% - 6px);text-align:center;background-color:#FFFFFF;color:#000000;font-size:14px;font-family:sans-serif;\" class=\"md-btn  md-btn-raised\" id=\"B-HXB_c0fc2b06-c20a47db\">HISTORIQUE</BUTTON>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_button\" id=\"HXB_fff6ab44-8add413f\">\n   <rect id=\"svg_336133ff-8d2245f3\" height=\"32\" width=\"170\" y=\"115\" x=\"1090\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXB_ac174bf1-46f648ba\" width=\"170\" height=\"32\" y=\"115\" x=\"1090\">\n    <BUTTON style=\"width:calc(100% - 6px);height:calc(100% - 6px);text-align:center;background-color:#FFFFFF;color:#000000;font-size:14px;font-family:sans-serif;\" class=\"md-btn  md-btn-raised\" id=\"B-HXB_ac174bf1-46f648ba\">COURBES</BUTTON>\n   </foreignObject>\n  </g>\n  <g stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_button\" id=\"HXB_1aa5e594-ee994e30\">\n   <rect id=\"svg_1aa4c162-d4534b3a\" height=\"32\" width=\"170\" y=\"160\" x=\"1090\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXB_e6c5f68e-c8374918\" width=\"170\" height=\"32\" y=\"160\" x=\"1090\">\n    <BUTTON style=\"width:calc(100% - 6px);height:calc(100% - 6px);text-align:center;background-color:#FFFFFF;color:#000000;font-size:14px;font-family:sans-serif;\" class=\"md-btn  md-btn-raised\" id=\"B-HXB_e6c5f68e-c8374918\">ALARMES</BUTTON>\n   </foreignObject>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-proceng-valvecx\" id=\"SHE_9260de4d-a70241d0\">\n   <path d=\"M95,441L113,451.8L95,462.6L95,441zM131,441L113,451.8L131,462.6L131,441zM113,451.8L123.8,469.8L102.2,469.8L113,451.8z\" id=\"SHE_e5044f44-e21c421d\"/>\n  </g>\n  <g text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-proceng-valvecx\" id=\"SHE_05c08322-31694d11\">\n   <path d=\"M266,441L283,451.2L266,461.4L266,441zM300,441L283,451.2L300,461.4L300,441zM283,451.2L293.2,468.2L272.8,468.2L283,451.2z\" id=\"SHE_621f8b47-f4344be5\"/>\n  </g>\n  <text text-anchor=\"start\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#0D47A1\" font-size=\"28\" y=\"40\" x=\"20\" id=\"svg_sitepilote_txt0\">STATION DE POMPAGE - NOM DU SITE</text>\n  <text text-anchor=\"start\" font-family=\"Arial\" font-weight=\"normal\" fill=\"#1B5E20\" font-size=\"13\" y=\"62\" x=\"20\" id=\"svg_sitepilote_txt1\">Zones de texte</text>\n  <text text-anchor=\"start\" font-family=\"Arial\" font-weight=\"normal\" fill=\"#1B5E20\" font-size=\"13\" y=\"262\" x=\"20\" id=\"svg_sitepilote_txt2\">Commandes</text>\n  <text text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"14\" y=\"265\" x=\"600\" id=\"svg_sitepilote_txt3\">RÉSERVOIR</text>\n  <text text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"13\" y=\"625\" x=\"192\" id=\"svg_sitepilote_txt4\">POMPE 1</text>\n  <text text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"13\" y=\"625\" x=\"362\" id=\"svg_sitepilote_txt5\">POMPE 2</text>\n  <text text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"13\" y=\"355\" x=\"922\" id=\"svg_sitepilote_txt6\">POMPE 3</text>\n  <text text-anchor=\"end\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"13\" y=\"400\" x=\"860\" id=\"svg_sitepilote_txt7\">Débit :</text>\n  <text text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" fill=\"#0D47A1\" font-size=\"16\" y=\"715\" x=\"1120\" id=\"svg_sitepilote_txt8\">BÂCHE À EAU</text>\n  <rect id=\"svg_sitepilote_lbl0\" x=\"20\" y=\"270\" width=\"135\" height=\"30\" fill=\"#FFFF99\" stroke=\"#757575\"/>\n  <text id=\"svg_sitepilote_lbltxt0\" x=\"87\" y=\"290\" font-size=\"12\" font-weight=\"bold\" font-family=\"Arial\" text-anchor=\"middle\" fill=\"#000000\">VALIDER</text>\n  <rect id=\"svg_sitepilote_lbl1\" x=\"20\" y=\"315\" width=\"135\" height=\"30\" fill=\"#FFFF99\" stroke=\"#757575\"/>\n  <text id=\"svg_sitepilote_lbltxt1\" x=\"87\" y=\"335\" font-size=\"12\" font-weight=\"bold\" font-family=\"Arial\" text-anchor=\"middle\" fill=\"#000000\">MARCHE</text>\n  <rect id=\"svg_sitepilote_lbl2\" x=\"20\" y=\"360\" width=\"135\" height=\"30\" fill=\"#FFFF99\" stroke=\"#757575\"/>\n  <text id=\"svg_sitepilote_lbltxt2\" x=\"87\" y=\"380\" font-size=\"12\" font-weight=\"bold\" font-family=\"Arial\" text-anchor=\"middle\" fill=\"#000000\">ARRÊT</text>\n  <rect id=\"svg_sitepilote_lbl3\" x=\"20\" y=\"405\" width=\"135\" height=\"30\" fill=\"#FFFF99\" stroke=\"#757575\"/>\n  <text id=\"svg_sitepilote_lbltxt3\" x=\"87\" y=\"425\" font-size=\"12\" font-weight=\"bold\" font-family=\"Arial\" text-anchor=\"middle\" fill=\"#000000\">MODE AUTOMATIQUE</text>\n </g>\n</svg>"
+   },
+   {
+    "id": "v_site_historique",
+    "name": "Historique",
+    "type": "svg",
+    "profile": {
+     "width": 1280,
+     "height": 720,
+     "bkcolor": "#C1DDAAff",
+     "margin": 10,
+     "align": "topCenter",
+     "gridType": "fixed",
+     "viewRenderDelay": 0
+    },
+    "items": {
+     "HXI_d9effa97-6b7a4732": {
+      "id": "HXI_d9effa97-6b7a4732",
+      "type": "svg-ext-html_input",
+      "name": "hist_date_debut",
+      "property": {
+       "events": [],
+       "actions": [],
+       "options": {
+        "type": "datetime"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXI_0df5ef23-a5424ef9": {
+      "id": "HXI_0df5ef23-a5424ef9",
+      "type": "svg-ext-html_input",
+      "name": "hist_date_fin",
+      "property": {
+       "events": [],
+       "actions": [],
+       "options": {
+        "type": "datetime"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXB_d2f66905-b973495c": {
+      "id": "HXB_d2f66905-b973495c",
+      "type": "svg-ext-html_button",
+      "name": "hist_btn_afficher",
+      "property": {
+       "events": [],
+       "actions": [],
+       "text": "AFFICHER"
+      },
+      "label": "HtmlButton",
+      "hide": false,
+      "lock": false
+     },
+     "OXC_78dd4a14-46284145": {
+      "id": "OXC_78dd4a14-46284145",
+      "type": "svg-ext-own_ctrl-table",
+      "name": "tableau_historique",
+      "property": {
+       "id": null,
+       "type": "data",
+       "options": {
+        "paginator": {
+         "show": false
+        },
+        "filter": {
+         "show": false
+        },
+        "daterange": {
+         "show": false
+        },
+        "realtime": false,
+        "lastRange": "last1h",
+        "gridColor": "#E0E0E0",
+        "header": {
+         "show": true,
+         "height": 30,
+         "fontSize": 12,
+         "background": "#F0F0F0",
+         "color": "#757575"
+        },
+        "row": {
+         "height": 30,
+         "fontSize": 10,
+         "background": "#F9F9F9",
+         "color": "#000000"
+        },
+        "selection": {
+         "background": "#3059AF",
+         "color": "#FFFFFF",
+         "fontBold": true
+        },
+        "columns": [
+         {
+          "id": "c_31013104a811-107a11",
+          "label": "Date/Time",
+          "type": "timestamp",
+          "align": "left",
+          "width": 100
+         },
+         {
+          "id": "c_1352a4a91-139b4",
+          "label": "Tags",
+          "type": "label",
+          "align": "left",
+          "width": 100
+         }
+        ],
+        "alarmsColumns": [],
+        "alarmFilter": {
+         "filterA": [],
+         "filterB": [],
+         "filterC": []
+        },
+        "reportsColumns": [],
+        "reportFilter": {
+         "filterA": []
+        },
+        "rows": []
+       },
+       "events": []
+      },
+      "label": "HtmlTable",
+      "hide": false,
+      "lock": false
+     }
+    },
+    "variables": {},
+    "svgcontent": "<svg width=\"1280\" height=\"720\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:html=\"http://www.w3.org/1999/xhtml\">\n <filter height=\"200\" width=\"200\" y=\"-3\" x=\"-3\" id=\"blur-filter\">\n  <feGaussianBlur stdDeviation=\"3\"/>\n </filter>\n <g>\n  <title>Layer 1</title>\n  <g data-name=\"hist_date_debut\" xml:space=\"preserve\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_d9effa97-6b7a4732\">\n   <rect id=\"svg_cf5f69fe-6fff4b41\" height=\"32\" width=\"230\" y=\"90\" x=\"90\" stroke-width=\"0.5\"/>\n   <foreignObject id=\"H-HXI_7a63e282-9ba148e9\" width=\"230\" height=\"32\" y=\"90\" x=\"90\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_7a63e282-9ba148e9\"/>\n   </foreignObject>\n  </g>\n  <g data-name=\"hist_date_fin\" xml:space=\"preserve\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_0df5ef23-a5424ef9\">\n   <rect id=\"svg_6fb6f6dd-13ab4d91\" height=\"32\" width=\"230\" y=\"90\" x=\"400\" stroke-width=\"0.5\"/>\n   <foreignObject style=\"padding-left: 1px;\" id=\"H-HXI_0cfefbf4-055d47d7\" width=\"230\" height=\"32\" y=\"90\" x=\"400\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_0cfefbf4-055d47d7\"/>\n   </foreignObject>\n  </g>\n  <g xml:space=\"preserve\" stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_button\" id=\"HXB_d2f66905-b973495c\">\n   <rect id=\"svg_bd1af160-6b5a43aa\" height=\"32\" width=\"140\" y=\"90\" x=\"670\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXB_f4d36732-61e54439\" width=\"140\" height=\"32\" y=\"90\" x=\"670\">\n    <BUTTON style=\"width:calc(100% - 6px);height:calc(100% - 6px);text-align:center;background-color:#FFFFFF;color:#000000;font-size:14px;font-family:sans-serif;\" class=\"md-btn  md-btn-raised\" id=\"B-HXB_f4d36732-61e54439\">AFFICHER</BUTTON>\n   </foreignObject>\n  </g>\n  <g data-name=\"tableau_historique\" xml:space=\"preserve\" text-anchor=\"right\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-own_ctrl-table\" id=\"OXC_78dd4a14-46284145\">\n   <rect id=\"svg_6088eb23-7ff44c12\" height=\"520\" width=\"1200\" y=\"150\" x=\"40\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-OXC_dacef69f-81e94a63\" width=\"1200\" height=\"520\" y=\"150\" x=\"40\">\n    <DIV style=\"width:100%;height:100%;\" id=\"D-OXC_dacef69f-81e94a63\">\n     <APP-DATA-TABLE class=\"ng-star-inserted\">\n      <!--bindings={\n  \"ng-reflect-ng-if\": \"false\"\n}-->\n      <DIV style=\"height: 100%;\" class=\"data-table-scroll\">\n       <MAT-TABLE style=\"background-color: rgb(249, 249, 249); --mat-table-row-item-outline-color: #E0E0E0; --mdc-data-table-row-divider-color: #E0E0E0;\" ng-reflect-track-by=\"trackByRow(index, row) {\n    i\" ng-reflect-data-source=\"[object Object]\" role=\"table\" class=\"mat-mdc-table mdc-data-table__table cdk-table mat-sort\">\n        <!--container-->\n        <!--container-->\n        <MAT-HEADER-ROW style=\"height: 30px; background-color: rgb(240, 240, 240); border-bottom: 1px solid rgb(224, 224, 224); display: flex; top: 0px; z-index: 100;\" class=\"mat-mdc-header-row mdc-data-table__header-row cdk-header-row mat-row data-table-header ng-star-inserted mat-mdc-table-sticky mat-mdc-table-sticky-border-elem-top\" role=\"row\">\n         <TH style=\"width: 100px; color: rgb(117, 117, 117); text-align: left; font-size: 12px;\" aria-sort=\"none\" class=\"mat-sort-header ng-tns-c1137168538-43 mat-sort-header-disabled ng-star-inserted\">\n          <DIV cdk-describedby-host=\"ng-1\" aria-describedby=\"cdk-describedby-message-ng-1-97\" class=\"mat-sort-header-container mat-focus-indicator ng-tns-c1137168538-43\">\n           <DIV class=\"mat-sort-header-content ng-tns-c1137168538-43\">Date/Time</DIV>\n           <!--container-->\n          </DIV>\n         </TH>\n         <TH style=\"width: 100px; color: rgb(117, 117, 117); text-align: left; font-size: 12px;\" aria-sort=\"none\" class=\"mat-sort-header ng-tns-c1137168538-44 mat-sort-header-disabled ng-star-inserted\">\n          <DIV cdk-describedby-host=\"ng-1\" aria-describedby=\"cdk-describedby-message-ng-1-97\" class=\"mat-sort-header-container mat-focus-indicator ng-tns-c1137168538-44\">\n           <DIV class=\"mat-sort-header-content ng-tns-c1137168538-44\">Tags</DIV>\n           <!--container-->\n          </DIV>\n         </TH>\n         <!--ng-container-->\n        </MAT-HEADER-ROW>\n        <!--ng-container-->\n        <!--ng-container-->\n        <!--ng-container-->\n        <!--ng-container-->\n        <!--container-->\n       </MAT-TABLE>\n      </DIV>\n      <!--bindings={\n  \"ng-reflect-ng-if\": \"false\"\n}-->\n      <!--bindings={\n  \"ng-reflect-ng-if\": \"false\"\n}-->\n     </APP-DATA-TABLE>\n    </DIV>\n   </foreignObject>\n  </g>\n  <text font-family=\"Arial\" font-weight=\"bold\" fill=\"#0D47A1\" font-size=\"28\" y=\"50\" x=\"40\" id=\"svg_hist_titre\">HISTORIQUE</text>\n  <text font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"15\" y=\"112\" x=\"40\" id=\"svg_hist_du\">Du :</text>\n  <text font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"15\" y=\"112\" x=\"350\" id=\"svg_hist_au\">Au :</text>\n  <text font-family=\"Arial\" font-weight=\"normal\" fill=\"#5D4037\" font-size=\"13\" y=\"700\" x=\"40\" id=\"svg_hist_note\">Tableau vide pour le moment : il sera relié à la base de données PostgreSQL.</text>\n </g>\n</svg>"
+   },
+   {
+    "id": "v_site_courbes",
+    "name": "Courbes",
+    "type": "svg",
+    "profile": {
+     "width": 1280,
+     "height": 720,
+     "bkcolor": "#C1DDAAff",
+     "margin": 10,
+     "align": "topCenter",
+     "gridType": "fixed",
+     "viewRenderDelay": 0
+    },
+    "items": {
+     "HXI_ccbe5398-143e4dbd": {
+      "id": "HXI_ccbe5398-143e4dbd",
+      "type": "svg-ext-html_input",
+      "name": "courbes_date_debut",
+      "property": {
+       "events": [],
+       "actions": [],
+       "options": {
+        "type": "datetime"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXI_eb8ecc97-34c84bc8": {
+      "id": "HXI_eb8ecc97-34c84bc8",
+      "type": "svg-ext-html_input",
+      "name": "courbes_date_fin",
+      "property": {
+       "events": [],
+       "actions": [],
+       "options": {
+        "type": "datetime"
+       }
+      },
+      "label": "HtmlInput",
+      "hide": false,
+      "lock": false
+     },
+     "HXB_318dd681-30214b62": {
+      "id": "HXB_318dd681-30214b62",
+      "type": "svg-ext-html_button",
+      "name": "courbes_btn_afficher",
+      "property": {
+       "events": [],
+       "actions": [],
+       "text": "AFFICHER"
+      },
+      "label": "HtmlButton",
+      "hide": false,
+      "lock": false
+     },
+     "HXC_39d12bdf-a20a46b0": {
+      "id": "HXC_39d12bdf-a20a46b0",
+      "type": "svg-ext-html_chart",
+      "name": "courbe_tendances",
+      "property": null,
+      "label": "HtmlChart",
+      "hide": false,
+      "lock": false
+     }
+    },
+    "variables": {},
+    "svgcontent": "<svg width=\"1280\" height=\"720\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:html=\"http://www.w3.org/1999/xhtml\">\n <filter height=\"200\" width=\"200\" y=\"-3\" x=\"-3\" id=\"blur-filter\">\n  <feGaussianBlur stdDeviation=\"3\"/>\n </filter>\n <g>\n  <title>Layer 1</title>\n  <g data-name=\"courbes_date_debut\" xml:space=\"preserve\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_ccbe5398-143e4dbd\">\n   <rect id=\"svg_a0758efc-353d4d3e\" height=\"32\" width=\"230\" y=\"90\" x=\"90\" stroke-width=\"0.5\"/>\n   <foreignObject id=\"H-HXI_562c068f-e84d442f\" width=\"230\" height=\"32\" y=\"90\" x=\"90\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_562c068f-e84d442f\"/>\n   </foreignObject>\n  </g>\n  <g data-name=\"courbes_date_fin\" xml:space=\"preserve\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_input\" id=\"HXI_eb8ecc97-34c84bc8\">\n   <rect id=\"svg_27f9373c-a4f440cf\" height=\"32\" width=\"230\" y=\"90\" x=\"400\" stroke-width=\"0.5\"/>\n   <foreignObject style=\"padding-left: 1px;\" id=\"H-HXI_354288f7-79d84712\" width=\"230\" height=\"32\" y=\"90\" x=\"400\">\n    <INPUT style=\"width: calc(100% - 7px); height: calc(100% - 7px); text-align: right; border: unset; font-size: 14px; font-family: sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\" value=\"#.##\" type=\"text\" id=\"I-HXI_354288f7-79d84712\"/>\n   </foreignObject>\n  </g>\n  <g xml:space=\"preserve\" stroke=\"rgba(0,0,0,0)\" fill=\"rgba(0,0,0,0)\" type=\"svg-ext-html_button\" id=\"HXB_318dd681-30214b62\">\n   <rect id=\"svg_9eb58a8e-fbef4ddf\" height=\"32\" width=\"140\" y=\"90\" x=\"670\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXB_004e4c6e-0b1347be\" width=\"140\" height=\"32\" y=\"90\" x=\"670\">\n    <BUTTON style=\"width:calc(100% - 6px);height:calc(100% - 6px);text-align:center;background-color:#FFFFFF;color:#000000;font-size:14px;font-family:sans-serif;\" class=\"md-btn  md-btn-raised\" id=\"B-HXB_004e4c6e-0b1347be\">AFFICHER</BUTTON>\n   </foreignObject>\n  </g>\n  <g data-name=\"courbe_tendances\" xml:space=\"preserve\" text-anchor=\"right\" font-family=\"sans-serif\" font-size=\"14\" stroke=\"#000000\" fill=\"#FFFFFF\" type=\"svg-ext-html_chart\" id=\"HXC_39d12bdf-a20a46b0\">\n   <rect id=\"svg_e9c9315d-f8c04ad9\" height=\"520\" width=\"1200\" y=\"150\" x=\"40\" stroke-width=\"0\"/>\n   <foreignObject id=\"H-HXC_c8d8fbee-fa484a40\" width=\"1200\" height=\"520\" y=\"150\" x=\"40\">\n    <DIV style=\"width:100%;height:100%;\" id=\"D-HXC_c8d8fbee-fa484a40\">\n     <CHART-UPLOT class=\"ng-star-inserted\">\n      <DIV style=\"background-color: rgba(255, 255, 255, 0);\" class=\"mychart-panel\">\n       <!--bindings={\n  \"ng-reflect-ng-if\": \"false\"\n}-->\n       <NGX-UPLOT class=\"mychart-graph\">\n        <DIV>\n         <DIV class=\"uplot u-hz\">\n          <DIV style=\"color: rgb(0, 0, 0); font-size: 18px; font-family: Roboto-Regular;\" class=\"u-title\">Title</DIV>\n          <DIV style=\"width: 1200px; height: 440px;\" class=\"u-wrap\">\n           <DIV style=\"left: 25px; top: 0px; width: 1150px; height: 360px;\" class=\"u-under\"></DIV>\n           <CANVAS height=\"550\" width=\"1500\"/>\n           <DIV style=\"left: 25px; top: 0px; width: 1150px; height: 360px;\" class=\"u-over\">\n            <DIV style=\"transform: translate(-10px, 0px);\" class=\"u-cursor-x u-off\"></DIV>\n            <DIV style=\"transform: translate(0px, -10px);\" class=\"u-cursor-y u-off\"></DIV>\n            <DIV class=\"u-select\"></DIV>\n            <DIV style=\"width: 5px; height: 5px; margin-left: -2.5px; margin-top: -2.5px; transform: translate(-10px, -10px);\" class=\"u-cursor-pt u-off\"></DIV>\n           </DIV>\n           <DIV style=\"top: 360px; height: 50px; left: 25px; width: 1150px;\" class=\"u-axis\"></DIV>\n           <DIV class=\"u-axis u-off\"></DIV>\n           <DIV class=\"u-axis u-off\"></DIV>\n           <DIV class=\"u-axis u-off\"></DIV>\n           <DIV class=\"u-axis u-off\"></DIV>\n          </DIV>\n          <TABLE style=\"color: rgb(0, 0, 0); line-height: 0;\" class=\"u-legend u-inline u-live\">\n           <TBODY>\n            <TR class=\"u-series\">\n             <TH>\n              <DIV class=\"u-marker\"></DIV>\n              <DIV class=\"u-label\">Time</DIV>\n             </TH>\n             <TD class=\"u-value\">01/01/1970 1:00:00 AM</TD>\n            </TR>\n            <TR class=\"u-series\">\n             <TH>\n              <DIV style=\"border: 2px solid red; background: rgba(255, 0, 0, 0.3);\" class=\"u-marker\"></DIV>\n              <DIV class=\"u-label\">Serie</DIV>\n             </TH>\n             <TD class=\"u-value\">--</TD>\n            </TR>\n           </TBODY>\n          </TABLE>\n         </DIV>\n        </DIV>\n       </NGX-UPLOT>\n       <!--bindings={\n  \"ng-reflect-ng-if\": \"false\"\n}-->\n       <!--bindings={\n  \"ng-reflect-ng-if\": \"false\"\n}-->\n      </DIV>\n     </CHART-UPLOT>\n    </DIV>\n   </foreignObject>\n  </g>\n  <text font-family=\"Arial\" font-weight=\"bold\" fill=\"#0D47A1\" font-size=\"28\" y=\"50\" x=\"40\" id=\"svg_courbes_titre\">COURBES</text>\n  <text font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"15\" y=\"112\" x=\"40\" id=\"svg_courbes_du\">Du :</text>\n  <text font-family=\"Arial\" font-weight=\"bold\" fill=\"#000000\" font-size=\"15\" y=\"112\" x=\"350\" id=\"svg_courbes_au\">Au :</text>\n  <text font-family=\"Arial\" font-weight=\"normal\" fill=\"#5D4037\" font-size=\"13\" y=\"700\" x=\"40\" id=\"svg_courbes_note\">Courbe vide pour le moment : elle sera reliée à la base de données PostgreSQL.</text>\n </g>\n</svg>"
+   }
+  ],
+  "layout": {
+   "autoresize": false,
+   "start": "v_site_accueil",
+   "navigation": {
+    "mode": "over",
+    "type": "block",
+    "bkcolor": "#F4F5F7",
+    "fgcolor": "#1D1D1D",
+    "logo": false,
+    "items": [
+     {
+      "id": "n_accueil",
+      "text": "Accueil",
+      "link": "",
+      "view": "v_site_accueil",
+      "icon": "home",
+      "image": "",
+      "permission": null,
+      "permissionRoles": null
+     },
+     {
+      "id": "n_historique",
+      "text": "Historique",
+      "link": "",
+      "view": "v_site_historique",
+      "icon": "history",
+      "image": "",
+      "permission": null,
+      "permissionRoles": null
+     },
+     {
+      "id": "n_courbes",
+      "text": "Courbes",
+      "link": "",
+      "view": "v_site_courbes",
+      "icon": "show_chart",
+      "image": "",
+      "permission": null,
+      "permissionRoles": null
+     },
+     {
+      "id": "n_alarmes",
+      "text": "Alarmes et événements",
+      "link": "",
+      "view": "[alarms]",
+      "icon": "notifications",
+      "image": "",
+      "permission": null,
+      "permissionRoles": null
+     }
+    ]
+   },
+   "header": {
+    "bkcolor": "#ffffff",
+    "fgcolor": "#000000",
+    "height": 46,
+    "buttonHeight": 36,
+    "fontSize": 13,
+    "itemsAnchor": "left",
+    "title": "SITE PILOTE - NOM DU SITE",
+    "dateTimeDisplay": "dd/MM/yyyy HH:mm:ss",
+    "items": []
+   },
+   "showdev": true,
+   "inputdialog": "false",
+   "hidenavigation": false,
+   "theme": "",
+   "loginonstart": false,
+   "loginoverlaycolor": "none",
+   "show_connection_error": true,
+   "customStyles": ""
+  }
+ },
+ "recipes": [],
+ "ar": {
+  "enabled": false,
+  "markers": []
+ },
+ "version": "1.00",
+ "languages": {
+  "options": [],
+  "default": {
+   "id": "EN",
+   "name": "English"
+  }
+ },
+ "charts": [],
+ "server": {
+  "id": "0",
+  "name": "FUXA Server",
+  "type": "FuxaServer",
+  "property": {}
+ }
+}
